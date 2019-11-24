@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeStudentActivity"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/header_background"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:color/holo_blue_bright" />
+
+        <TextView
+            android:id="@+id/classes_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="Turmas"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/header_background"
+            app:layout_constraintStart_toStartOf="@+id/header_background"
+            app:layout_constraintTop_toBottomOf="@+id/header_background" />
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="200dp"
+            android:layout_marginLeft="200dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/header_background"
+            app:layout_constraintStart_toEndOf="@id/classes_title"
+            app:layout_constraintTop_toBottomOf="@+id/header_background"
+            app:srcCompat="@drawable/iconfinder_home_126572"
+            tools:layout_editor_absoluteX="311dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/classes_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
