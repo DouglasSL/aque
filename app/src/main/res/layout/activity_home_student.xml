@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeStudentActivity"
+    tools:context=".actvities.HomeStudentActivity"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@+id/header_background"
             app:layout_constraintStart_toEndOf="@id/classes_title"
             app:layout_constraintTop_toBottomOf="@+id/header_background"
-            app:srcCompat="@drawable/iconfinder_home_126572"
+            app:srcCompat="@drawable/home"
             tools:layout_editor_absoluteX="311dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

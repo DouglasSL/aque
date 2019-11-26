@@ -1,7 +1,8 @@
-package com.cin.ufpe.br.aque
+package com.cin.ufpe.br.aque.actvities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.cin.ufpe.br.aque.R
 
 class MainActivity : AppCompatActivity() {
 
