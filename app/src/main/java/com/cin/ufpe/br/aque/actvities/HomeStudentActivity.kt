@@ -3,8 +3,13 @@ package com.cin.ufpe.br.aque.actvities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.cin.ufpe.br.aque.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.cin.ufpe.br.aque.adapters.StudentClassAdapter
+import com.cin.ufpe.br.aque.dtos.StudentClassInfoDto
+import kotlinx.android.synthetic.main.activity_home_student.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class HomeStudentActivity : AppCompatActivity() {
 
@@ -12,12 +17,21 @@ class HomeStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_student)
 
-        student_button.setOnClickListener {
-            startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
+        classes_list.layoutManager = LinearLayoutManager(this)
+        val adapter = StudentClassAdapter()
+
+        doAsync {
+//            TODO("pegar todas as infos do banco e criar a lista")
+            val classInfos: List<StudentClassInfoDto> = emptyList()
+
+            uiThread {
+                adapter.classInfos = classInfos
+                classes_list.adapter = adapter
+            }
         }
 
-        professor_button.setOnClickListener {
-            startActivity(Intent())
+        home_button.setOnClickListener {
+            startActivity(Intent(applicationContext, MainActivity::class.java))
         }
     }
 }
