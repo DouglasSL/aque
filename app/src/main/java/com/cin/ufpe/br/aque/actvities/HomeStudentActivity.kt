@@ -30,8 +30,8 @@ class HomeStudentActivity : AppCompatActivity() {
             }
         }
 
-        home_button.setOnClickListener {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
+        add_class_button.setOnClickListener {
+            startActivity(Intent(applicationContext, StudentAddClassActivity::class.java))
         }
     }
 }

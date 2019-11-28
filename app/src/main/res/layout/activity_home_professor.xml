@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actvities.HomeStudentActivity"
+    tools:context=".actvities.HomeProfessorActivity"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/header_background"
+            android:id="@+id/header_professor_background"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -20,28 +20,28 @@
             app:srcCompat="@android:color/holo_blue_bright" />
 
         <TextView
-            android:id="@+id/classes_title"
+            android:id="@+id/classes_professor_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="Turmas"
+            android:text="Suas Turmas"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/header_background"
-            app:layout_constraintStart_toStartOf="@+id/header_background"
-            app:layout_constraintTop_toBottomOf="@+id/header_background" />
+            app:layout_constraintBottom_toTopOf="@+id/header_professor_background"
+            app:layout_constraintStart_toStartOf="@+id/header_professor_background"
+            app:layout_constraintTop_toBottomOf="@+id/header_professor_background" />
 
         <ImageButton
-            android:id="@+id/add_class_button"
+            android:id="@+id/add_professor_class_button"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:layout_marginStart="200dp"
+            android:layout_marginStart="130dp"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/header_background"
-            app:layout_constraintStart_toEndOf="@id/classes_title"
-            app:layout_constraintTop_toBottomOf="@+id/header_background"
+            app:layout_constraintBottom_toTopOf="@+id/header_professor_background"
+            app:layout_constraintStart_toEndOf="@id/classes_professor_title"
+            app:layout_constraintTop_toBottomOf="@+id/header_professor_background"
             app:srcCompat="@android:drawable/ic_input_add" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
