@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actvities.HomeProfessorActivity"></activity>
+        <activity android:name=".actvities.ProfessorAddClassActivity"></activity>
+        <activity android:name=".acti.Main2Activity" />
+        <activity android:name=".actvities.HomeProfessorActivity" />
         <activity android:name=".actvities.StudentAddClassActivity" />
         <activity android:name=".actvities.HomeStudentActivity" />
         <activity android:name=".actvities.MainActivity">
