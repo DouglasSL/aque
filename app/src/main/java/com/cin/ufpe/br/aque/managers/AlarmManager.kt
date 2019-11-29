@@ -41,11 +41,9 @@ class AlarmManager {
                 set(Calendar.MINUTE, minute)
             }
 
-            // Repeat alarm every 15 minutes
-            alarmManager.setRepeating(
+            alarmManager.set(
                 AlarmManager.ELAPSED_REALTIME,
                 calendar.timeInMillis,
-                1000 * 60 * 15,
                 alarmIntent
             )
         }
