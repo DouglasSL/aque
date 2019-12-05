@@ -34,8 +34,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="28dp"
         android:ems="10"
+        android:hint="Nome da Disciplina"
         android:inputType="textPersonName"
-        android:text="Nome da Disciplina"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_background3" />
@@ -47,8 +47,8 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="14dp"
         android:ems="10"
+        android:hint="Sala"
         android:inputType="textPersonName"
-        android:text="Sala"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_professor_class_name" />
 

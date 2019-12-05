@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         professor_button.setOnClickListener {
-            startActivity(Intent())
+            startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
         }
     }
 }
