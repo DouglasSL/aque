@@ -1,11 +1,14 @@
 package com.cin.ufpe.br.aque.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.dtos.StudentClassInfoDto
+import com.cin.ufpe.br.aque.utils.DayOfWeekUtils
 import kotlinx.android.synthetic.main.student_class_item.view.*
 
 class StudentClassAdapter : RecyclerView.Adapter<StudentClassAdapter.ViewHolder>() {
@@ -17,12 +20,19 @@ class StudentClassAdapter : RecyclerView.Adapter<StudentClassAdapter.ViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.student_class_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.student_class_item, parent, false)
         return ViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("not implemented")
+        val classItem = classInfos[position]
+
+        holder.className.text = classItem.className
+        holder.classProfessorName.text = classItem.professorName
+        holder.firstSchedule.text = DayOfWeekUtils.getPortugueseDayOfWeek(classItem.firstDayOfWeek)
+        holder.secondeSchedule.text = DayOfWeekUtils.getPortugueseDayOfWeek(classItem.secondDayOfWeek)
     }
 
     class ViewHolder (item : View) : RecyclerView.ViewHolder(item) {

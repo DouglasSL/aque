@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -12,40 +12,88 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/student_class_name"
-            android:layout_width="0dp"
+            android:id="@+id/student_class_field"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
+            android:text="Turma: "
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/student_class_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/student_class_field"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/student_class_professor_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
+            android:text="Professor: "
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/student_class_field" />
 
         <TextView
             android:id="@+id/student_class_professor_name"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/student_class_professor_field"
+            app:layout_constraintTop_toBottomOf="@id/student_class_name" />
+
+        <TextView
+            android:id="@+id/student_schedule_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
+            android:text="Horário: "
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/student_class_professor_name" />
 
         <TextView
             android:id="@+id/student_class_first_schedule"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/student_schedule_field"
+            app:layout_constraintTop_toBottomOf="@id/student_class_professor_name" />
+
+        <TextView
+            android:id="@+id/student_dummy_hyphen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
+            android:text=" - "
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/student_class_first_schedule"
+            app:layout_constraintTop_toBottomOf="@id/student_class_professor_name" />
 
         <TextView
             android:id="@+id/student_class_second_schedule"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
+            android:layout_marginStart="15dp"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@id/student_dummy_hyphen"
+            app:layout_constraintTop_toBottomOf="@id/student_class_professor_name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,13 +2,14 @@ package com.cin.ufpe.br.aque.dtos
 
 import java.time.DayOfWeek
 import java.time.LocalDateTime
+import java.time.LocalTime
 
 class StudentClassInfoDto(val className: String,
                           val professorName: String,
                           val firstDayOfWeek: DayOfWeek,
                           val secondDayOfWeek: DayOfWeek,
-                          val firstStartTime: LocalDateTime,
-                          val secondStartTime: LocalDateTime,
-                          val firstEndTime: LocalDateTime,
-                          val secondEndTime: LocalDateTime) {
+                          val firstStartTime: LocalTime,
+                          val secondStartTime: LocalTime,
+                          val firstEndTime: LocalTime,
+                          val secondEndTime: LocalTime) {
 }
