@@ -8,6 +8,7 @@ import android.util.Log
 import com.cin.ufpe.br.aque.database.ClassDB
 import com.cin.ufpe.br.aque.database.LocationDB
 import com.cin.ufpe.br.aque.managers.AlarmManager
+import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Class
 import org.jetbrains.anko.doAsync
 
@@ -35,7 +36,11 @@ class ClassAlarmReceiver : BroadcastReceiver() {
             var db = LocationDB.getDatabase(context)
             var locations =  db.LocationDAO().all()
             Log.i(TAG, "Retreived ${locations.size} locations during last class")
-            // send request with batch if student
+
+            if (SharedPreferencesManager.isStudent(context)){
+                // send request with batch if student
+                //this logic will be necessary if we do the match in the APP
+            }
 
             db.LocationDAO().clear()
         }
