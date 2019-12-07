@@ -8,8 +8,7 @@ data class Class(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     var className: String,
-    var firstDayOfWeek: Int,
-    var secondDayOfWeek: Int
-) {
-
-}
+    var day: Int,
+    var startHour: Int,
+    var endHour: Int
+)
