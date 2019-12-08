@@ -31,7 +31,7 @@ class LoginDataSource {
             }
 
             Log.i("login", "Usuário logado")
-            val user = LoggedInUser(java.util.UUID.randomUUID().toString(), student.name!!, student.cpf!!)
+            val user = LoggedInUser(java.util.UUID.randomUUID().toString(), student.name!!, student.email!!)
             return Result.Success(user)
         } catch (e: Throwable) {
             return Result.Error(IOException("Error logging in", e))

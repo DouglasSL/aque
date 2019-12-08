@@ -21,6 +21,7 @@ import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
 import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
 import com.cin.ufpe.br.aque.managers.FirebaseManager
+import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Student
 import java.util.*
 
@@ -28,6 +29,7 @@ class StudentLoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private val firebase = FirebaseManager()
+    private val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +117,7 @@ class StudentLoginActivity : AppCompatActivity() {
                     .addOnFailureListener { e ->
                         Log.w("login", "Error receiving student", e)
                     }
+
             }
         }
     }
@@ -128,6 +131,8 @@ class StudentLoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+        sharedPreferencesManager.setUserId(model.email)
+        sharedPreferencesManager.setUserType(true)
         startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
     }
 

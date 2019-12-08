@@ -1,7 +1,9 @@
 package com.cin.ufpe.br.aque.data
 
 import com.cin.ufpe.br.aque.data.model.LoggedInUser
+import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Student
+import kotlin.coroutines.coroutineContext
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -41,7 +43,6 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
-        // TODO add cpf in shared preferences
 
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore

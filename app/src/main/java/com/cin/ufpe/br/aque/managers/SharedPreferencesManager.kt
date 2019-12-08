@@ -37,6 +37,13 @@ class SharedPreferencesManager {
         return sharedPreferences.getString(USER_ID, "")!!
     }
 
+    fun setUserId(userId: String) {
+        Log.i(TAG, "Retrieving user id")
+        val editor = sharedPreferences.edit()
+        editor.putString(USER_ID, userId)
+        editor.apply()
+    }
+
     fun setCurentClass(currentClass: Class) {
         Log.i(TAG, "Setting current class -> $currentClass")
         var editor = sharedPreferences.edit()
