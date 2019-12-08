@@ -8,9 +8,7 @@ import android.content.Intent
 import android.icu.util.Calendar
 import android.os.SystemClock
 import android.util.Log
-import com.cin.ufpe.br.aque.receivers.ClassAlarmReceiver
-import com.cin.ufpe.br.aque.receivers.LocationAlarmReceiver
-import com.cin.ufpe.br.aque.receivers.RoutineAlarmReceiver
+import com.cin.ufpe.br.aque.receivers.*
 
 class AlarmManager {
     companion object {
@@ -46,6 +44,20 @@ class AlarmManager {
             alarmManager.set(
                 AlarmManager.ELAPSED_REALTIME,
                 calendar.timeInMillis,
+                alarmIntent
+            )
+        }
+
+        fun setMatcherAlarm(ctx: Context, className: String) {
+            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmIntent: PendingIntent = Intent(ctx, MatcherAlarmReceiver::class.java).let { intent ->
+                intent.putExtra(EXTRA_CLASS_NAME, className)
+                PendingIntent.getBroadcast(ctx, 0, intent, 0)
+            }
+
+            alarmManager.set(
+                AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + 60 * 1000,
                 alarmIntent
             )
         }

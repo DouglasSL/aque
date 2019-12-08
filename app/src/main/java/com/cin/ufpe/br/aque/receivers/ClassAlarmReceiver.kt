@@ -11,7 +11,7 @@ import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Class
-import com.cin.ufpe.br.aque.models.StudentLocation
+import com.cin.ufpe.br.aque.models.Location
 import org.jetbrains.anko.doAsync
 
 const val ACTION_START_CLASS_ALARM = "com.cin.ufpe.br.aque.services.action.START_CLASS_ALARM"
@@ -34,18 +34,22 @@ class ClassAlarmReceiver : BroadcastReceiver() {
         AlarmManager.cancelClassAlarm(context, CODE_START_CLASS_ALARM)
         AlarmManager.cancelClassAlarm(context, C0DE_END_CLASS_ALARM)
 
+        var sharedPreferences = SharedPreferencesManager(context)
+        var currentClass = sharedPreferences.getCurentClass()
+
         doAsync {
             var db = LocationDB.getDatabase(context)
             var locations =  db.LocationDAO().all()
             Log.i(TAG, "Retreived ${locations.size} locations during last class")
 
             var firebase = FirebaseManager()
-            if (SharedPreferencesManager.isStudent(context)){
-                // TODO clocar no shared preferences
-//                var studentList = StudentLocation("id", locations)
-//                firebase.saveStudentLocations(studentList)
-                // send request with batch if student
-                //this logic will be necessary if we do the match in the APP
+
+            var userId = sharedPreferences.getUserId()
+            if (!sharedPreferences.isStudent()){
+                firebase.saveUserLocations("${currentClass.className}_${currentClass.day}", userId, locations)
+            } else {
+                firebase.saveUserLocations("${userId}_${currentClass.day}", userId, locations)
+                AlarmManager.setMatcherAlarm(context, currentClass.className)
             }
 
             db.LocationDAO().clear()
@@ -62,6 +66,7 @@ class ClassAlarmReceiver : BroadcastReceiver() {
             val nextClass : Class? = db.ClassDAO().getNextClass(currentDay, currentHour)
 
             if (nextClass != null) {
+                sharedPreferences.setCurentClass(nextClass)
                 Log.i(TAG, "Setting next class start alarm")
                 AlarmManager.setClassAlarm(context, nextClass.startHour,0, CODE_START_CLASS_ALARM, ACTION_START_CLASS_ALARM)
                 Log.i(TAG, "Setting next class end alarm")
