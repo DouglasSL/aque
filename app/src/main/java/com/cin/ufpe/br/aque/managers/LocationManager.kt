@@ -47,6 +47,4 @@ class LocationManager : LocationListener {
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
     }
-
-
 }

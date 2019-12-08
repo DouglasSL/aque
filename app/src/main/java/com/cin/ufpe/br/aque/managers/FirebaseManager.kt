@@ -1,66 +1,63 @@
 package com.cin.ufpe.br.aque.managers
 
 import android.util.Log
-import com.cin.ufpe.br.aque.data.Result
-import com.cin.ufpe.br.aque.data.model.LoggedInUser
 import com.cin.ufpe.br.aque.models.Location
 import com.cin.ufpe.br.aque.models.Student
-import com.cin.ufpe.br.aque.models.StudentLocation
+import com.cin.ufpe.br.aque.models.UserLocation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
 
 class FirebaseManager {
 
-    private lateinit var db: FirebaseFirestore
+    private var db: FirebaseFirestore
     private val TAG = FirebaseManager::class.java.simpleName
 
     constructor() {
         db = FirebaseFirestore.getInstance()
     }
 
-    fun saveStudentLocations(studentId: String, className: String, day: Int, locations: List<Location>) {
-        val studentLocations = StudentLocation(studentId, locations)
+    fun saveUserLocations(path: String, id: String, locations: List<Location>) {
+        val userLocations = UserLocation(id, locations)
 
-        db.collection("${className}_$day")
-            .add(studentLocations)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "Collected locations saved on Firebase")
+        db.collection(path)
+            .add(userLocations)
+            .addOnSuccessListener {
+                Log.d(TAG, "Collected locations saved on Firebase on path ${path}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error saving collected locations", e)
             }
     }
 
-    fun getStudentsLocations(studentId: String, className: String, day: Int) : List<StudentLocation> {
-        var studentsLocation = mutableListOf<StudentLocation>()
-        db.collection("${className}_$day")
+    fun getUsersLocations(path: String) : List<UserLocation> {
+        var usersLocations = mutableListOf<UserLocation>()
+        db.collection(path)
             .get()
             .addOnSuccessListener { documents  ->
                 for (document in documents) {
-                    var studentLocation = document.toObject(StudentLocation::class.java)
-                    studentsLocation.add(studentLocation)
+                    var userLocation = document.toObject(UserLocation::class.java)
+                    usersLocations.add(userLocation)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
 
-        return studentsLocation
+        return usersLocations
     }
 
-    fun deleteStudentLocations(className: String, day: Int) {
-        db.collection("${className}_$day")
+    fun deleteCollection(path: String) {
+        db.collection(path)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     document.reference.delete()
                 }
-                Log.d(TAG, "Deleted student locations on Firebase")
+                Log.d(TAG, "Deleted path $path on Firebase")
             }
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error deleting student locations", e)
+                Log.w(TAG, "Error deleting path $path :", e)
             }
     }
 
