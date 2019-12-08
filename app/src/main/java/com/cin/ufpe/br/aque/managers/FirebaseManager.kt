@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseManager {
 
-    private lateinit var db: FirebaseFirestore
+    private var db: FirebaseFirestore
     private val TAG = FirebaseManager::class.java.simpleName
 
     constructor() {
@@ -20,7 +20,7 @@ class FirebaseManager {
 
         db.collection(path)
             .add(userLocations)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener {
                 Log.d(TAG, "Collected locations saved on Firebase on path ${path}")
             }
             .addOnFailureListener { e ->
@@ -62,7 +62,7 @@ class FirebaseManager {
     fun saveStudent(student: Student) {
         db.collection("student")
             .add(student)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener {
                 Log.d(TAG, "Student ${student.cpf} saved on Firebase")
             }
             .addOnFailureListener { e ->
