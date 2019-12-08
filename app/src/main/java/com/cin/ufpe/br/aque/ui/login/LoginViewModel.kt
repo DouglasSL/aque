@@ -8,6 +8,7 @@ import com.cin.ufpe.br.aque.data.LoginRepository
 import com.cin.ufpe.br.aque.data.Result
 
 import com.cin.ufpe.br.aque.R
+import com.cin.ufpe.br.aque.models.Student
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -17,9 +18,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
 
-    fun login(username: String, password: String) {
+    fun login(username: String, password: String, student: Student) {
         // can be launched in a separate asynchronous job
-        val result = loginRepository.login(username, password)
+        val result = loginRepository.login(username, password, student)
 
         if (result is Result.Success) {
             _loginResult.value =

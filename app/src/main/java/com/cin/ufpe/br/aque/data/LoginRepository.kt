@@ -1,6 +1,7 @@
 package com.cin.ufpe.br.aque.data
 
 import com.cin.ufpe.br.aque.data.model.LoggedInUser
+import com.cin.ufpe.br.aque.models.Student
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -27,9 +28,9 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+    fun login(username: String, password: String, student: Student): Result<LoggedInUser> {
         // handle login
-        val result = dataSource.login(username, password)
+        val result = dataSource.login(username, password, student)
 
         if (result is Result.Success) {
             setLoggedInUser(result.data)
@@ -40,6 +41,8 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
     private fun setLoggedInUser(loggedInUser: LoggedInUser) {
         this.user = loggedInUser
+        // TODO add cpf in shared preferences
+
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }

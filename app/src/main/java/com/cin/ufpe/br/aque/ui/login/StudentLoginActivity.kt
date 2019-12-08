@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -19,14 +20,17 @@ import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
 import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
+import com.cin.ufpe.br.aque.managers.FirebaseManager
+import com.cin.ufpe.br.aque.models.Student
+import java.util.*
 
 class StudentLoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
+    private val firebase = FirebaseManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_student_login)
 
         val username = findViewById<EditText>(R.id.username)
@@ -92,15 +96,25 @@ class StudentLoginActivity : AppCompatActivity() {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
                             username.text.toString(),
-                            password.text.toString()
+                            password.text.toString(),
+                            Student()
                         )
                 }
                 false
             }
 
             login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
+                firebase.getStudent(username.text.toString())
+                    .addOnSuccessListener { documentReference ->
+                        val student = documentReference.toObject(Student::class.java) as Student
+                        Log.d("login", "Got student ${student.name} received from Firebase")
+
+                        loading.visibility = View.VISIBLE
+                        loginViewModel.login(username.text.toString(), password.text.toString(), student)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("login", "Error receiving student", e)
+                    }
             }
         }
     }
