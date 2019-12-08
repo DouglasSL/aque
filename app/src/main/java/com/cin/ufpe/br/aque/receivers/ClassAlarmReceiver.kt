@@ -8,8 +8,10 @@ import android.util.Log
 import com.cin.ufpe.br.aque.database.ClassDB
 import com.cin.ufpe.br.aque.database.LocationDB
 import com.cin.ufpe.br.aque.managers.AlarmManager
+import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Class
+import com.cin.ufpe.br.aque.models.StudentLocation
 import org.jetbrains.anko.doAsync
 
 const val ACTION_START_CLASS_ALARM = "com.cin.ufpe.br.aque.services.action.START_CLASS_ALARM"
@@ -37,7 +39,11 @@ class ClassAlarmReceiver : BroadcastReceiver() {
             var locations =  db.LocationDAO().all()
             Log.i(TAG, "Retreived ${locations.size} locations during last class")
 
+            var firebase = FirebaseManager()
             if (SharedPreferencesManager.isStudent(context)){
+                // TODO clocar no shared preferences
+//                var studentList = StudentLocation("id", locations)
+//                firebase.saveStudentLocations(studentList)
                 // send request with batch if student
                 //this logic will be necessary if we do the match in the APP
             }

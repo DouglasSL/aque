@@ -3,6 +3,7 @@ package com.cin.ufpe.br.aque.managers
 import android.util.Log
 import com.cin.ufpe.br.aque.models.Location
 import com.cin.ufpe.br.aque.models.Student
+import com.cin.ufpe.br.aque.models.StudentLocation
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FirebaseManager {
@@ -15,20 +16,46 @@ class FirebaseManager {
     }
 
     fun saveStudentLocations(studentId: String, className: String, day: Int, locations: List<Location>) {
-        val classLocations = hashMapOf(
-            "student" to studentId,
-            "class" to className,
-            "day" to day,
-            "locations" to locations
-        )
+        val studentLocations = StudentLocation(studentId, locations)
 
-        db.collection("class_locations")
-            .add(classLocations)
+        db.collection("${className}_$day")
+            .add(studentLocations)
             .addOnSuccessListener { documentReference ->
                 Log.d(TAG, "Collected locations saved on Firebase")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error saving collected locations", e)
+            }
+    }
+
+    fun getStudentsLocations(studentId: String, className: String, day: Int) : List<StudentLocation> {
+        var studentsLocation = mutableListOf<StudentLocation>()
+        db.collection("${className}_$day")
+            .get()
+            .addOnSuccessListener { documents  ->
+                for (document in documents) {
+                    var studentLocation = document.toObject(StudentLocation::class.java)
+                    studentsLocation.add(studentLocation)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
+
+        return studentsLocation
+    }
+
+    fun deleteStudentLocations(className: String, day: Int) {
+        db.collection("${className}_$day")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    document.reference.delete()
+                }
+                Log.d(TAG, "Deleted student locations on Firebase")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error deleting student locations", e)
             }
     }
 
@@ -40,22 +67,6 @@ class FirebaseManager {
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error saving student", e)
-            }
-    }
-
-    fun getStudentsLocations(studentId: String, className: String, day: Int) {
-        db.collection("class_locations")
-            .whereEqualTo("student", studentId)
-            .whereEqualTo("class", className)
-            .whereEqualTo("day", day).get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    //TODO
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
             }
     }
 }
