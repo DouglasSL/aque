@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cin.ufpe.br.aque">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:name=".AqueApplication"
         android:allowBackup="true"
@@ -15,9 +19,12 @@
             android:name=".ui.login.StudentLoginActivity"
             android:label="@string/title_activity_student_login" />
         <activity android:name=".actvities.ProfessorAddClassActivity" />
-        <activity android:name=".acti.Main2Activity" />
         <activity android:name=".actvities.HomeProfessorActivity" />
         <activity android:name=".actvities.StudentAddClassActivity" />
+        <receiver
+            android:name=".receivers.LocationAlarmReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
         <activity android:name=".actvities.HomeStudentActivity" />
         <activity android:name=".actvities.MainActivity">
             <intent-filter>

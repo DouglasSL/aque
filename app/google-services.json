@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "511588527935",
+    "firebase_url": "https://aque-e1037.firebaseio.com",
+    "project_id": "aque-e1037",
+    "storage_bucket": "aque-e1037.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511588527935:android:9ed17e0e6df3743c442d8a",
+        "android_client_info": {
+          "package_name": "com.cin.ufpe.br.aque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511588527935-tu7gssqrmk9o6mij75dgfsaqnbr5rkf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmo6GXN6QrB8HTNJLfDOAT8ygQIjctyhI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511588527935-tu7gssqrmk9o6mij75dgfsaqnbr5rkf5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
