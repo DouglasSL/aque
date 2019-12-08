@@ -28,8 +28,8 @@ class LocationManager : LocationListener {
         Log.i(TAG, "Location received")
         if (location != null) {
             Log.i(TAG, "Current location is: $location")
-            var lat = location!!.latitude
-            var long = location!!.longitude
+            var lat = location.latitude
+            var long = location.longitude
             var loc = com.cin.ufpe.br.aque.models.Location(null, lat, long)
             doAsync {
                 val db = LocationDB.getDatabase(AqueApplication.applicationContext())

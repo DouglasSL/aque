@@ -20,7 +20,4 @@ interface ClassDAO {
 
     @Query("SELECT * FROM class WHERE day = :day AND startHour >= :hour LIMIT 1")
     fun getNextClass(day: Int, hour: Int) : Class?
-
-    @Query("DELETE FROM location")
-    fun clear()
 }
