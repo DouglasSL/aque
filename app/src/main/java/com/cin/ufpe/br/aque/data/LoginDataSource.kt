@@ -2,12 +2,9 @@ package com.cin.ufpe.br.aque.data
 
 import android.util.Log
 import com.cin.ufpe.br.aque.data.model.LoggedInUser
-import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.models.Student
-import kotlinx.coroutines.tasks.await
 import java.io.IOException
 import java.security.MessageDigest
-import java.util.*
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
