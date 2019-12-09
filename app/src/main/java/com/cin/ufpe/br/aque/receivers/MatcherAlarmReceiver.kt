@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
 import android.util.Log
+import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Location
@@ -40,7 +41,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                         //match logic
                         var locations = teacherLocations.locations
                         var teacherLocation = locations.get(0)
-                        var mostOcurrence = 0
+                        var mostOccurrence = 0
                         for (i in 0..(locations.size)) {
                             var occurrence = 0
                             for (j in 0..(locations.size)) {
@@ -48,9 +49,9 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                                     occurrence += 1
                                 }
                             }
-                            if (occurrence > mostOcurrence) {
+                            if (occurrence > mostOccurrence) {
                                 teacherLocation = locations.get(i)
-                                mostOcurrence = occurrence
+                                mostOccurrence = occurrence
                             }
                         }
 
@@ -68,6 +69,8 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                                 presentStudents.add(studentLocation.id)
                             }
                         }
+
+                        AlarmManager.cancelMatcherAlarm(context)
                     }
                     .addOnFailureListener { exception ->
                         Log.w(TAG, "Error getting teacher documents: ", exception)
