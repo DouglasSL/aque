@@ -31,7 +31,8 @@ class FirebaseManager {
 
     fun saveClassDescription(classDescription: ClassDescription) {
         db.collection("class_description")
-            .add(classDescription)
+            .document(classDescription.id)
+            .set(classDescription)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved class ${classDescription.className} on Firebase")
             }
@@ -51,8 +52,8 @@ class FirebaseManager {
             }
     }
 
-    fun getClassDescription() : Task<QuerySnapshot>{
-        return db.collection("class_description").get()
+    fun getClassDescription(classId: String) : Task<DocumentSnapshot>{
+        return db.collection("class_description").document(classId).get()
     }
 
     fun getUsersLocations(path: String) : Task<QuerySnapshot> {
