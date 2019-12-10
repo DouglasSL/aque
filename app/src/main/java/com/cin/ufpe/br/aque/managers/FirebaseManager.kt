@@ -8,6 +8,7 @@ import com.cin.ufpe.br.aque.models.UserLocation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 
 class FirebaseManager {
 
@@ -31,21 +32,8 @@ class FirebaseManager {
             }
     }
 
-    fun getUsersLocations(path: String) : List<UserLocation> {
-        var usersLocations = mutableListOf<UserLocation>()
-        db.collection(path)
-            .get()
-            .addOnSuccessListener { documents  ->
-                for (document in documents) {
-                    var userLocation = document.toObject(UserLocation::class.java)
-                    usersLocations.add(userLocation)
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG, "Error getting documents: ", exception)
-            }
-
-        return usersLocations
+    fun getUsersLocations(path: String) : Task<QuerySnapshot> {
+        return db.collection(path).get()
     }
 
     fun deleteCollection(path: String) {

@@ -1,4 +1,4 @@
-package com.cin.ufpe.br.aque.ui.login
+package com.cin.ufpe.br.aque.ui.login.student
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,28 +18,34 @@ class StudentLoginViewModel(private val studentLoginRepository: StudentLoginRepo
     private val _loginResult = MutableLiveData<StudentLoginResult>()
     val studentLoginResult: LiveData<StudentLoginResult> = _loginResult
 
-    fun login(username: String, password: String, student: Student) {
+    fun login(password: String, student: Student) {
         // can be launched in a separate asynchronous job
-        val result = studentLoginRepository.login(username, password, student)
+        val result = studentLoginRepository.login(password, student)
 
         if (result is Result.Success) {
             _loginResult.value =
-                StudentLoginResult(success = StudentLoggedInUserView(
-                    displayName = result.data.displayName,
-                    email = result.data.email
-                ))
+                StudentLoginResult(
+                    success = StudentLoggedInUserView(
+                        displayName = result.data.displayName,
+                        email = result.data.email
+                    )
+                )
         } else {
-            _loginResult.value = StudentLoginResult(error = R.string.login_failed)
+            _loginResult.value =
+                StudentLoginResult(error = R.string.login_failed)
         }
     }
 
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {
-            _loginForm.value = StudentLoginFormState(usernameError = R.string.invalid_username)
+            _loginForm.value =
+                StudentLoginFormState(usernameError = R.string.invalid_username)
         } else if (!isPasswordValid(password)) {
-            _loginForm.value = StudentLoginFormState(passwordError = R.string.invalid_password)
+            _loginForm.value =
+                StudentLoginFormState(passwordError = R.string.invalid_password)
         } else {
-            _loginForm.value = StudentLoginFormState(isDataValid = true)
+            _loginForm.value =
+                StudentLoginFormState(isDataValid = true)
         }
     }
 
