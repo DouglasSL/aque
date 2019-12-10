@@ -10,13 +10,8 @@ import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.models.Professor
-import com.cin.ufpe.br.aque.models.Student
-import com.cin.ufpe.br.aque.ui.login.ProfessorLoginActivity
-import com.cin.ufpe.br.aque.ui.login.StudentLoginActivity
-import com.cin.ufpe.br.aque.ui.login.afterTextChanged
-import org.jetbrains.anko.doAsync
+import com.cin.ufpe.br.aque.ui.login.professor.ProfessorLoginActivity
 import java.security.MessageDigest
-import java.util.*
 
 class ProfessorRegisterActivity : AppCompatActivity() {
     private val HEX_CHARS = "0123456789ABCDEF".toCharArray()
@@ -31,7 +26,7 @@ class ProfessorRegisterActivity : AppCompatActivity() {
         val universityName = findViewById<EditText>(R.id.professor_university_name_input)
         val email = findViewById<EditText>(R.id.professor_email_input)
         val cpf = findViewById<EditText>(R.id.professor_cpf_input)
-        val register = findViewById<Button>(R.id.student_register)
+        val register = findViewById<Button>(R.id.professor_register_button)
 
         register.setOnClickListener {
             if(!isEmailValid(email.text.toString())){
@@ -53,9 +48,9 @@ class ProfessorRegisterActivity : AppCompatActivity() {
                 val hashedPassword = printHexBinary(bytes).toUpperCase()
 
                 val newProfessor = Professor(
-                    cpf.text.toString(),
-                    username.text.toString(),
                     email.text.toString(),
+                    username.text.toString(),
+                    cpf.text.toString(),
                     universityName.text.toString(),
                     hashedPassword
                 )

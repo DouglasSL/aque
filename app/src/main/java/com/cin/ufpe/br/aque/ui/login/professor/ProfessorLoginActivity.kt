@@ -1,15 +1,13 @@
-package com.cin.ufpe.br.aque.ui.login
+package com.cin.ufpe.br.aque.ui.login.professor
 
 import android.app.Activity
 import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -18,32 +16,34 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.cin.ufpe.br.aque.R
-import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
-import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
+import com.cin.ufpe.br.aque.actvities.HomeProfessorActivity
+import com.cin.ufpe.br.aque.actvities.ProfessorRegisterActivity
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
-import com.cin.ufpe.br.aque.models.Student
+import com.cin.ufpe.br.aque.models.Professor
+import com.cin.ufpe.br.aque.ui.login.student.afterTextChanged
 
-class StudentLoginActivity : AppCompatActivity() {
+class ProfessorLoginActivity : AppCompatActivity() {
 
-    private lateinit var studentLoginViewModel: StudentLoginViewModel
+    private lateinit var loginViewModel: LoginViewModel
     private val firebase = FirebaseManager()
-    private val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_student_login)
+        setContentView(R.layout.activity_professor_login)
 
-        val username = findViewById<EditText>(R.id.username)
-        val password = findViewById<EditText>(R.id.password)
-        val login = findViewById<Button>(R.id.login)
-        val register = findViewById<Button>(R.id.register)
-        val loading = findViewById<ProgressBar>(R.id.loading)
+        val username = findViewById<EditText>(R.id.professor_username)
+        val password = findViewById<EditText>(R.id.professor_password)
+        val login = findViewById<Button>(R.id.professor_login)
+        val register = findViewById<Button>(R.id.professor_register)
+        val loading = findViewById<ProgressBar>(R.id.professor_loading)
 
-        studentLoginViewModel = ViewModelProviders.of(this, StudentLoginViewModelFactory())
-            .get(StudentLoginViewModel::class.java)
+        loginViewModel = ViewModelProviders.of(this,
+            LoginViewModelFactory()
+        )
+            .get(LoginViewModel::class.java)
 
-        studentLoginViewModel.studentLoginFormState.observe(this@StudentLoginActivity, Observer {
+        loginViewModel.loginFormState.observe(this@ProfessorLoginActivity, Observer {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
@@ -57,7 +57,7 @@ class StudentLoginActivity : AppCompatActivity() {
             }
         })
 
-        studentLoginViewModel.studentLoginResult.observe(this@StudentLoginActivity, Observer {
+        loginViewModel.loginResult.observe(this@ProfessorLoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
@@ -73,12 +73,8 @@ class StudentLoginActivity : AppCompatActivity() {
             finish()
         })
 
-        register.setOnClickListener {
-            startActivity(Intent(applicationContext, StudentRegisterActivity::class.java))
-        }
-
         username.afterTextChanged {
-            studentLoginViewModel.loginDataChanged(
+            loginViewModel.loginDataChanged(
                 username.text.toString(),
                 password.text.toString()
             )
@@ -86,7 +82,7 @@ class StudentLoginActivity : AppCompatActivity() {
 
         password.apply {
             afterTextChanged {
-                studentLoginViewModel.loginDataChanged(
+                loginViewModel.loginDataChanged(
                     username.text.toString(),
                     password.text.toString()
                 )
@@ -95,33 +91,36 @@ class StudentLoginActivity : AppCompatActivity() {
             setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
-                        studentLoginViewModel.login(
-                            username.text.toString(),
+                        loginViewModel.login(
                             password.text.toString(),
-                            Student()
+                            Professor()
                         )
                 }
                 false
             }
 
             login.setOnClickListener {
-                firebase.getStudent(username.text.toString())
+                firebase.getProfessor(username.text.toString())
                     .addOnSuccessListener { documentReference ->
-                        val student = documentReference.toObject(Student::class.java) as Student
-                        Log.d("login", "Got student ${student.name} received from Firebase")
+                        val professor = documentReference.toObject(Professor::class.java) as Professor
+                        Log.d("login", "Got professor ${professor.name} received from Firebase")
 
                         loading.visibility = View.VISIBLE
-                        studentLoginViewModel.login(username.text.toString(), password.text.toString(), student)
+                        loginViewModel.login(password.text.toString(), professor)
                     }
                     .addOnFailureListener { e ->
                         Log.w("login", "Error receiving student", e)
                     }
-
             }
         }
+
+        register.setOnClickListener {
+            startActivity(Intent(applicationContext, ProfessorRegisterActivity::class.java))
+        }
+
     }
 
-    private fun updateUiWithUser(model: StudentLoggedInUserView) {
+    private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
@@ -130,27 +129,14 @@ class StudentLoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+
+        val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
         sharedPreferencesManager.setUserId(model.email)
-        sharedPreferencesManager.setUserType(true)
-        startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
+        sharedPreferencesManager.setUserType(false)
+        startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
     }
-}
-
-/**
- * Extension function to simplify setting an afterTextChanged action to EditText components.
- */
-fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
-    this.addTextChangedListener(object : TextWatcher {
-        override fun afterTextChanged(editable: Editable?) {
-            afterTextChanged.invoke(editable.toString())
-        }
-
-        override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-        override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-    })
 }

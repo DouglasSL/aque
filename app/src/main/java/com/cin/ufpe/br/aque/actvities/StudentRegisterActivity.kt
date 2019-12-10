@@ -10,9 +10,7 @@ import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.models.Student
-import com.cin.ufpe.br.aque.ui.login.StudentLoginActivity
-import com.cin.ufpe.br.aque.ui.login.afterTextChanged
-import org.jetbrains.anko.doAsync
+import com.cin.ufpe.br.aque.ui.login.student.StudentLoginActivity
 import java.security.MessageDigest
 import java.util.*
 

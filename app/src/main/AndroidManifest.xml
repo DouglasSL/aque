@@ -15,11 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.login.ProfessorLoginActivity"
+            android:name=".ui.login.professor.ProfessorLoginActivity"
             android:label="@string/title_activity_professor_login"></activity>
         <activity android:name=".actvities.StudentRegisterActivity" />
+        <activity android:name=".actvities.ProfessorRegisterActivity" />
         <activity
-            android:name=".ui.login.StudentLoginActivity"
+            android:name=".ui.login.student.StudentLoginActivity"
             android:label="@string/title_activity_student_login" />
         <activity android:name=".actvities.ProfessorAddClassActivity" />
         <activity android:name=".actvities.HomeProfessorActivity" />

@@ -3,14 +3,10 @@ package com.cin.ufpe.br.aque.actvities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.cin.ufpe.br.aque.AqueApplication
 import com.cin.ufpe.br.aque.R
-import com.cin.ufpe.br.aque.ui.login.StudentLoginActivity
-import com.cin.ufpe.br.aque.managers.AlarmManager
+import com.cin.ufpe.br.aque.ui.login.student.StudentLoginActivity
 import com.cin.ufpe.br.aque.managers.PermissionManager
-import com.cin.ufpe.br.aque.managers.WorkerManager
-import com.cin.ufpe.br.aque.ui.login.ProfessorLoginActivity
+import com.cin.ufpe.br.aque.ui.login.professor.ProfessorLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

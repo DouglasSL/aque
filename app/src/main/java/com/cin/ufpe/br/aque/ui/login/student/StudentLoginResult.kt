@@ -1,4 +1,4 @@
-package com.cin.ufpe.br.aque.ui.login
+package com.cin.ufpe.br.aque.ui.login.student
 
 /**
  * Authentication result : success (userStudent details) or error message.
