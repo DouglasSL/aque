@@ -28,7 +28,6 @@ class StudentLoginActivity : AppCompatActivity() {
 
     private lateinit var studentLoginViewModel: StudentLoginViewModel
     private val firebase = FirebaseManager()
-    private val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -131,6 +130,8 @@ class StudentLoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+
+        val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(true)
         startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
