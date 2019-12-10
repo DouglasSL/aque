@@ -31,7 +31,7 @@ class FirebaseManager {
 
     fun saveClassDescription(classDescription: ClassDescription) {
         db.collection("class_description")
-            .document(classDescription.id)
+            .document(classDescription.id!!)
             .set(classDescription)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved class ${classDescription.className} on Firebase")
@@ -43,7 +43,8 @@ class FirebaseManager {
 
     fun saveUserClass(path: String, userClass: UserClass) {
         db.collection(path)
-            .add(userClass)
+            .document(userClass.classId)
+            .set(userClass)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved userClass  on Firebase")
             }

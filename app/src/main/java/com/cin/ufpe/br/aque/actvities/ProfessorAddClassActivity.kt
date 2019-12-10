@@ -15,7 +15,6 @@ import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.UserClass
 import kotlinx.android.synthetic.main.activity_professor_add_class.*
 import org.jetbrains.anko.doAsync
-import java.lang.Exception
 
 
 class ProfessorAddClassActivity : AppCompatActivity() {
@@ -86,14 +85,15 @@ class ProfessorAddClassActivity : AppCompatActivity() {
                 doAsync {
                     var db = ClassDB.getDatabase(applicationContext)
                     var classFirstDay = Class(0, className, firstDay, firstDayStartHour, firstDayEndHour)
-                    var classSecondtDay = Class(0, className, secondDay, secondDayStartHour, secondDayEndHour)
+                    var classSecondDay = Class(0, className, secondDay, secondDayStartHour, secondDayEndHour)
 
                     db.ClassDAO().add(classFirstDay)
-                    db.ClassDAO().add(classSecondtDay)
+                    db.ClassDAO().add(classSecondDay)
 
                     var sharedPreferences = SharedPreferencesManager(applicationContext)
                     var userClass = UserClass(sharedPreferences.getUserId(), classId)
                     firebaseManager.saveUserClass("professor_class", userClass)
+                    Log.i("Professor_add_class", "Added class with id: " + classId)
                 }
 
                 startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))

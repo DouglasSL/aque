@@ -1,12 +1,12 @@
 package com.cin.ufpe.br.aque.models
 
 data class ClassDescription(
-    val id: String,
-    val className: String,
-    val firstDay: Int,
-    val secondDay: Int,
-    val firstDayStartHour: Int,
-    val firstDayEndHour: Int,
-    val secondDayStartHour: Int,
-    val secondDayEndHour: Int
+    val id: String? = null,
+    val className: String? = null,
+    val firstDay: Int? = null,
+    val secondDay: Int? = null,
+    val firstDayStartHour: Int? = null,
+    val firstDayEndHour: Int? = null,
+    val secondDayStartHour: Int? = null,
+    val secondDayEndHour: Int? = null
 )
