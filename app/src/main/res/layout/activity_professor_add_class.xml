@@ -1,244 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".actvities.ProfessorAddClassActivity">
 
-    <ImageView
-        android:id="@+id/header_background3"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:color/holo_blue_bright" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/add_professor_class_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:text="Criar Disciplina"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/header_background3"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:color/holo_blue_bright" />
 
-    <EditText
-        android:id="@+id/add_professor_class_name"
-        android:layout_width="363dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="28dp"
-        android:ems="10"
-        android:hint="Nome da Disciplina"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_background3" />
+        <TextView
+            android:id="@+id/add_professor_class_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Criar Disciplina"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/add_classroom_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="Sala"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_professor_class_name" />
+        <EditText
+            android:id="@+id/add_professor_class_name"
+            android:layout_width="363dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="28dp"
+            android:ems="10"
+            android:hint="Nome da Disciplina"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_background3" />
 
-    <TextView
-        android:id="@+id/start_date_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="102dp"
-        android:text="Data de Começo"
-        app:layout_constraintEnd_toStartOf="@+id/end_class_date_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_classroom_name" />
+        <EditText
+            android:id="@+id/add_classroom_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:hint="Sala"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_professor_class_name" />
 
-    <EditText
-        android:id="@+id/start_date_class"
-        android:layout_width="147dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="66dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toStartOf="@+id/end_class_date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_date_title" />
+        <TextView
+            android:id="@+id/first_class_day_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="10dp"
+            android:text="Primeiro Dia da Semana"
+            app:layout_constraintBottom_toTopOf="@+id/first_class_day_spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_classroom_name" />
 
-    <TextView
-        android:id="@+id/end_class_date_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="9dp"
-        android:text="Data de Fim"
-        app:layout_constraintBottom_toTopOf="@+id/end_class_date"
-        app:layout_constraintStart_toEndOf="@+id/start_date_title"
-        app:layout_constraintTop_toBottomOf="@+id/add_classroom_name" />
+        <Spinner
+            android:id="@+id/first_class_day_spinner"
+            android:layout_width="141dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_class_day_title" />
 
-    <EditText
-        android:id="@+id/end_class_date"
-        android:layout_width="147dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="9dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintStart_toEndOf="@+id/start_date_class"
-        app:layout_constraintTop_toBottomOf="@+id/end_class_date_title" />
+        <TextView
+            android:id="@+id/second_class_day_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="61dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="10dp"
+            android:text="Segundo Dia da Semana"
+            app:layout_constraintBottom_toTopOf="@+id/second_class_day_spinner"
+            app:layout_constraintStart_toEndOf="@+id/first_class_day_title"
+            app:layout_constraintTop_toBottomOf="@+id/add_classroom_name" />
 
-    <TextView
-        android:id="@+id/first_class_day_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="10dp"
-        android:text="Primeiro Dia da Semana"
-        app:layout_constraintBottom_toTopOf="@+id/first_class_day_spinner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_date_class" />
+        <Spinner
+            android:id="@+id/second_class_day_spinner"
+            android:layout_width="141dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/first_class_day_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/second_class_day_title" />
 
-    <Spinner
-        android:id="@+id/first_class_day_spinner"
-        android:layout_width="141dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_class_day_title" />
+        <TextView
+            android:id="@+id/first_class_day_start_hour_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="21dp"
+            android:text="Hora de Início Primeiro Dia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_class_day_spinner" />
 
-    <TextView
-        android:id="@+id/second_class_day_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="10dp"
-        android:text="Segundo Dia da Semana"
-        app:layout_constraintBottom_toTopOf="@+id/second_class_day_spinner"
-        app:layout_constraintStart_toEndOf="@+id/first_class_day_title"
-        app:layout_constraintTop_toBottomOf="@+id/end_class_date" />
+        <EditText
+            android:id="@+id/first_class_day_start_hour"
+            android:layout_width="146dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_class_day_start_hour_title" />
 
-    <Spinner
-        android:id="@+id/second_class_day_spinner"
-        android:layout_width="141dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/first_class_day_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/second_class_day_title" />
+        <EditText
+            android:id="@+id/second_class_day_start_hour"
+            android:layout_width="146dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintStart_toEndOf="@+id/first_class_day_start_hour"
+            app:layout_constraintTop_toBottomOf="@+id/second_class_day_start_hour_title" />
 
-    <TextView
-        android:id="@+id/first_class_day_start_hour_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="21dp"
-        android:text="Hora de Início Primeiro Dia"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_class_day_spinner" />
+        <TextView
+            android:id="@+id/second_class_day_start_hour_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="21dp"
+            android:text="Hora de Início Segundo Dia"
+            app:layout_constraintStart_toEndOf="@+id/first_class_day_start_hour_title"
+            app:layout_constraintTop_toBottomOf="@+id/second_class_day_spinner" />
 
-    <EditText
-        android:id="@+id/first_class_day_start_hour"
-        android:layout_width="146dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_class_day_start_hour_title" />
+        <EditText
+            android:id="@+id/first_class_day_end_hour"
+            android:layout_width="146dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintStart_toEndOf="@+id/second_class_day_end_hour"
+            app:layout_constraintTop_toBottomOf="@+id/second_class_day_end_hour_title" />
 
-    <EditText
-        android:id="@+id/second_class_day_start_hour"
-        android:layout_width="146dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/first_class_day_start_hour"
-        app:layout_constraintTop_toBottomOf="@+id/second_class_day_start_hour_title" />
+        <TextView
+            android:id="@+id/first_class_day_end_hour_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="19dp"
+            android:text="Hora de Fim Primeiro Dia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_class_day_start_hour" />
 
-    <TextView
-        android:id="@+id/second_class_day_start_hour_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="21dp"
-        android:text="Hora de Início Segundo Dia"
-        app:layout_constraintStart_toEndOf="@+id/first_class_day_start_hour_title"
-        app:layout_constraintTop_toBottomOf="@+id/second_class_day_spinner" />
+        <EditText
+            android:id="@+id/second_class_day_end_hour"
+            android:layout_width="146dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_class_day_end_hour_title" />
 
-    <EditText
-        android:id="@+id/first_class_day_end_hour"
-        android:layout_width="146dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintStart_toEndOf="@+id/second_class_day_end_hour"
-        app:layout_constraintTop_toBottomOf="@+id/second_class_day_end_hour_title" />
+        <TextView
+            android:id="@+id/second_class_day_end_hour_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="19dp"
+            android:text="Hora de Fim Segundo Dia"
+            app:layout_constraintStart_toEndOf="@+id/first_class_day_end_hour_title"
+            app:layout_constraintTop_toBottomOf="@+id/second_class_day_start_hour" />
 
-    <TextView
-        android:id="@+id/first_class_day_end_hour_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="19dp"
-        android:text="Hora de Fim Primeiro Dia"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_class_day_start_hour" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="132dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="137dp"
+            android:layout_marginBottom="55dp"
+            android:background="@android:color/holo_blue_dark"
+            android:text="Criar Disciplina"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_class_day_end_hour" />
 
-    <EditText
-        android:id="@+id/second_class_day_end_hour"
-        android:layout_width="146dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_class_day_end_hour_title" />
-
-    <TextView
-        android:id="@+id/second_class_day_end_hour_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="19dp"
-        android:text="Hora de Fim Segundo Dia"
-        app:layout_constraintStart_toEndOf="@+id/first_class_day_end_hour_title"
-        app:layout_constraintTop_toBottomOf="@+id/second_class_day_start_hour" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="55dp"
-        android:background="@android:color/holo_blue_dark"
-        android:text="Criar Disciplina"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_class_day_end_hour" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

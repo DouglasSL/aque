@@ -5,12 +5,17 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "student")
 data class Student(
-    @PrimaryKey var cpf: String,
-    var name: String,
-    var period: Int,
-    var graduation: String
+    @PrimaryKey var id: String? = null,
+    var name: String? = null,
+    var email: String? = null,
+    var cpf: String? = null,
+    var period: Int? = null,
+    var graduation: String? = null,
+    var password: String? = null
 ) {
     override fun toString(): String {
-        return this.name
+        if(this.name != null)
+            return this.name!!
+        return ""
     }
 }

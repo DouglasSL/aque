@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.cin.ufpe.br.aque.R
+import com.cin.ufpe.br.aque.ui.login.student.StudentLoginActivity
+import com.cin.ufpe.br.aque.managers.PermissionManager
+import com.cin.ufpe.br.aque.ui.login.professor.ProfessorLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -12,12 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        if (!PermissionManager.checkLocationPermission(this)) {
+            PermissionManager.requestLocationPermission(this)
+        }
+
         student_button.setOnClickListener {
-            startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
+            startActivity(Intent(applicationContext, StudentLoginActivity::class.java))
         }
 
         professor_button.setOnClickListener {
-            startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
+            startActivity(Intent(applicationContext, ProfessorLoginActivity::class.java))
         }
     }
 }

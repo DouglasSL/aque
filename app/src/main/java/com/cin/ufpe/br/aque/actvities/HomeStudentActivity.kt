@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.adapters.StudentClassAdapter
 import com.cin.ufpe.br.aque.dtos.StudentClassInfoDto
+import com.cin.ufpe.br.aque.managers.LocationManager
 import kotlinx.android.synthetic.main.activity_home_student.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -17,6 +18,9 @@ class HomeStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_student)
 
+        var locationManager = LocationManager()
+
+        locationManager.requestLocation(this)
         classes_list.layoutManager = LinearLayoutManager(this)
         val adapter = StudentClassAdapter()
 

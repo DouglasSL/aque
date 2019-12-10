@@ -29,7 +29,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/class_code_input"
         android:layout_width="257dp"
         android:layout_height="53dp"
         android:layout_marginStart="33dp"
