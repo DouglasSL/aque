@@ -12,7 +12,7 @@ import java.security.MessageDigest
 class StudentLoginDataSource {
     private val HEX_CHARS = "0123456789ABCDEF".toCharArray()
 
-    fun login(username: String, password: String, student: Student): Result<StudentLoggedInUser> {
+    fun login(password: String, student: Student): Result<StudentLoggedInUser> {
         try {
 
             val bytes = MessageDigest.getInstance("SHA-256").digest(password.toByteArray())

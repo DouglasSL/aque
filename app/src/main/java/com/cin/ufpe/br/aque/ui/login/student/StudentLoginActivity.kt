@@ -1,4 +1,4 @@
-package com.cin.ufpe.br.aque.ui.login
+package com.cin.ufpe.br.aque.ui.login.student
 
 import android.app.Activity
 import android.content.Intent
@@ -40,7 +40,9 @@ class StudentLoginActivity : AppCompatActivity() {
         val register = findViewById<Button>(R.id.register)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        studentLoginViewModel = ViewModelProviders.of(this, StudentLoginViewModelFactory())
+        studentLoginViewModel = ViewModelProviders.of(this,
+            StudentLoginViewModelFactory()
+        )
             .get(StudentLoginViewModel::class.java)
 
         studentLoginViewModel.studentLoginFormState.observe(this@StudentLoginActivity, Observer {
@@ -96,7 +98,6 @@ class StudentLoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         studentLoginViewModel.login(
-                            username.text.toString(),
                             password.text.toString(),
                             Student()
                         )
@@ -111,7 +112,7 @@ class StudentLoginActivity : AppCompatActivity() {
                         Log.d("login", "Got student ${student.name} received from Firebase")
 
                         loading.visibility = View.VISIBLE
-                        studentLoginViewModel.login(username.text.toString(), password.text.toString(), student)
+                        studentLoginViewModel.login(password.text.toString(), student)
                     }
                     .addOnFailureListener { e ->
                         Log.w("login", "Error receiving student", e)

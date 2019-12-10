@@ -1,4 +1,4 @@
-package com.cin.ufpe.br.aque.ui.login
+package com.cin.ufpe.br.aque.ui.login.student
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

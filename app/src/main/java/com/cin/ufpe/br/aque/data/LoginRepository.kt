@@ -1,6 +1,7 @@
 package com.cin.ufpe.br.aque.data
 
 import com.cin.ufpe.br.aque.data.model.LoggedInUser
+import com.cin.ufpe.br.aque.models.Professor
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -27,9 +28,12 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+    fun login(
+        password: String,
+        professor: Professor
+    ): Result<LoggedInUser> {
         // handle login
-        val result = dataSource.login(username, password)
+        val result = dataSource.login(password, professor)
 
         if (result is Result.Success) {
             setLoggedInUser(result.data)

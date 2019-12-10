@@ -1,9 +1,9 @@
-package com.cin.ufpe.br.aque.ui.login
+package com.cin.ufpe.br.aque.ui.login.student
 
 /**
  * Data validation state of the login form.
  */
-data class LoginFormState(
+data class StudentLoginFormState(
     val usernameError: Int? = null,
     val passwordError: Int? = null,
     val isDataValid: Boolean = false
