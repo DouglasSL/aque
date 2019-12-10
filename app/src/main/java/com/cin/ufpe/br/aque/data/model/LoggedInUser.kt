@@ -5,6 +5,5 @@ package com.cin.ufpe.br.aque.data.model
  */
 data class LoggedInUser(
     val userId: String,
-    val displayName: String,
-    val email: String
+    val displayName: String
 )

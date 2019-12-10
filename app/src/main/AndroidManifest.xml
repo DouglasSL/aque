@@ -14,17 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actvities.StudentRegisterActivity"></activity>
+        <activity
+            android:name=".ui.login.ProfessorLoginActivity"
+            android:label="@string/title_activity_professor_login"></activity>
+        <activity android:name=".actvities.StudentRegisterActivity" />
         <activity
             android:name=".ui.login.StudentLoginActivity"
             android:label="@string/title_activity_student_login" />
         <activity android:name=".actvities.ProfessorAddClassActivity" />
         <activity android:name=".actvities.HomeProfessorActivity" />
         <activity android:name=".actvities.StudentAddClassActivity" />
+
         <receiver
             android:name=".receivers.LocationAlarmReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
+
         <activity android:name=".actvities.HomeStudentActivity" />
         <activity android:name=".actvities.MainActivity">
             <intent-filter>

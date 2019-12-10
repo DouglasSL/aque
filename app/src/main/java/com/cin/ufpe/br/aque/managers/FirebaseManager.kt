@@ -2,6 +2,7 @@ package com.cin.ufpe.br.aque.managers
 
 import android.util.Log
 import com.cin.ufpe.br.aque.models.Location
+import com.cin.ufpe.br.aque.models.Professor
 import com.cin.ufpe.br.aque.models.Student
 import com.cin.ufpe.br.aque.models.UserLocation
 import com.google.android.gms.tasks.Task
@@ -75,6 +76,24 @@ class FirebaseManager {
 
     fun getStudent(email: String): Task<DocumentSnapshot> {
         return db.collection("student")
+            .document(email)
+            .get()
+    }
+
+    fun saveProfessor(professor: Professor) {
+        db.collection("professor")
+            .document(professor.email!!)
+            .set(professor)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "Professor ${professor.email} saved on Firebase")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error saving professor", e)
+            }
+    }
+
+    fun getProfessor(email: String): Task<DocumentSnapshot> {
+        return db.collection("professor")
             .document(email)
             .get()
     }

@@ -21,24 +21,24 @@ class SharedPreferencesManager {
     }
 
     fun setUserType(isStudent: Boolean) {
-        Log.i(TAG, "Saving user type in the shared preferences")
+        Log.i(TAG, "Saving userStudent type in the shared preferences")
         var editor = sharedPreferences.edit()
         editor.putBoolean(USER_TYPE, isStudent)
         editor.apply()
     }
 
     fun isStudent() : Boolean {
-        Log.i(TAG, "Retreiving if the user is student")
+        Log.i(TAG, "Retreiving if the userStudent is student")
         return sharedPreferences.getBoolean(USER_TYPE, false)
     }
 
     fun getUserId() : String {
-        Log.i(TAG, "Retrieving user id")
+        Log.i(TAG, "Retrieving userStudent id")
         return sharedPreferences.getString(USER_ID, "")!!
     }
 
     fun setUserId(userId: String) {
-        Log.i(TAG, "Retrieving user id")
+        Log.i(TAG, "Retrieving userStudent id")
         val editor = sharedPreferences.edit()
         editor.putString(USER_ID, userId)
         editor.apply()

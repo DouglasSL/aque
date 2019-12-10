@@ -10,6 +10,7 @@ import com.cin.ufpe.br.aque.ui.login.StudentLoginActivity
 import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.PermissionManager
 import com.cin.ufpe.br.aque.managers.WorkerManager
+import com.cin.ufpe.br.aque.ui.login.ProfessorLoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         professor_button.setOnClickListener {
-            startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
+            startActivity(Intent(applicationContext, ProfessorLoginActivity::class.java))
         }
     }
 }

@@ -23,11 +23,10 @@ import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Student
-import java.util.*
 
 class StudentLoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private lateinit var studentLoginViewModel: StudentLoginViewModel
     private val firebase = FirebaseManager()
     private val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
 
@@ -41,10 +40,10 @@ class StudentLoginActivity : AppCompatActivity() {
         val register = findViewById<Button>(R.id.register)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        studentLoginViewModel = ViewModelProviders.of(this, StudentLoginViewModelFactory())
+            .get(StudentLoginViewModel::class.java)
 
-        loginViewModel.loginFormState.observe(this@StudentLoginActivity, Observer {
+        studentLoginViewModel.studentLoginFormState.observe(this@StudentLoginActivity, Observer {
             val loginState = it ?: return@Observer
 
             // disable login button unless both username / password is valid
@@ -58,7 +57,7 @@ class StudentLoginActivity : AppCompatActivity() {
             }
         })
 
-        loginViewModel.loginResult.observe(this@StudentLoginActivity, Observer {
+        studentLoginViewModel.studentLoginResult.observe(this@StudentLoginActivity, Observer {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
@@ -79,7 +78,7 @@ class StudentLoginActivity : AppCompatActivity() {
         }
 
         username.afterTextChanged {
-            loginViewModel.loginDataChanged(
+            studentLoginViewModel.loginDataChanged(
                 username.text.toString(),
                 password.text.toString()
             )
@@ -87,7 +86,7 @@ class StudentLoginActivity : AppCompatActivity() {
 
         password.apply {
             afterTextChanged {
-                loginViewModel.loginDataChanged(
+                studentLoginViewModel.loginDataChanged(
                     username.text.toString(),
                     password.text.toString()
                 )
@@ -96,7 +95,7 @@ class StudentLoginActivity : AppCompatActivity() {
             setOnEditorActionListener { _, actionId, _ ->
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
+                        studentLoginViewModel.login(
                             username.text.toString(),
                             password.text.toString(),
                             Student()
@@ -112,7 +111,7 @@ class StudentLoginActivity : AppCompatActivity() {
                         Log.d("login", "Got student ${student.name} received from Firebase")
 
                         loading.visibility = View.VISIBLE
-                        loginViewModel.login(username.text.toString(), password.text.toString(), student)
+                        studentLoginViewModel.login(username.text.toString(), password.text.toString(), student)
                     }
                     .addOnFailureListener { e ->
                         Log.w("login", "Error receiving student", e)
@@ -122,7 +121,7 @@ class StudentLoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
+    private fun updateUiWithUser(model: StudentLoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
