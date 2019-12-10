@@ -18,7 +18,7 @@ class RoutineAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_WEEK)
-
+        
         doAsync {
             Log.i(TAG, "Checking for classes")
             val db = ClassDB.getDatabase(context)

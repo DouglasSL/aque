@@ -1,10 +1,7 @@
 package com.cin.ufpe.br.aque.managers
 
 import android.util.Log
-import com.cin.ufpe.br.aque.models.Location
-import com.cin.ufpe.br.aque.models.Professor
-import com.cin.ufpe.br.aque.models.Student
-import com.cin.ufpe.br.aque.models.UserLocation
+import com.cin.ufpe.br.aque.models.*
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,6 +27,32 @@ class FirebaseManager {
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error saving collected locations", e)
             }
+    }
+
+    fun saveClassDescription(classDescription: ClassDescription) {
+        db.collection("class_description")
+            .add(classDescription)
+            .addOnSuccessListener {
+                Log.d(TAG, "Saved class ${classDescription.className} on Firebase")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error saving class ${classDescription.className}", e)
+            }
+    }
+
+    fun saveUserClass(path: String, userClass: UserClass) {
+        db.collection(path)
+            .add(userClass)
+            .addOnSuccessListener {
+                Log.d(TAG, "Saved userClass  on Firebase")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error saving userClass", e)
+            }
+    }
+
+    fun getClassDescription() : Task<QuerySnapshot>{
+        return db.collection("class_description").get()
     }
 
     fun getUsersLocations(path: String) : Task<QuerySnapshot> {
