@@ -112,6 +112,21 @@ class FirebaseManager {
             .get()
     }
 
+    fun saveClassDate(classId: String, date: Date) {
+        db.collection("${classId}_date")
+            .add(date)
+            .addOnSuccessListener {
+                Log.d(TAG, "Class Date saved on Firebase")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error saving Class Date", e)
+            }
+    }
+
+    fun getClassDate(classId: String): Task<QuerySnapshot> {
+        return db.collection("${classId}_date").get()
+    }
+
     fun getStudent(email: String): Task<DocumentSnapshot> {
         return db.collection("student")
             .document(email)

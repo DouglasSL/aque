@@ -8,6 +8,7 @@ import android.util.Log
 import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
+import com.cin.ufpe.br.aque.models.Date
 import com.cin.ufpe.br.aque.models.Location
 import com.cin.ufpe.br.aque.models.PresentStudents
 import com.cin.ufpe.br.aque.models.UserLocation
@@ -82,6 +83,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                         var docPath = "${classId}_${currentDay}_${currentMonth}_${currentYear}"
                         var pStudents = PresentStudents(currentDay, currentMonth, currentYear, presentStudents)
                         firebaseManager.savePresentStudents(docPath, pStudents)
+                        firebaseManager.saveClassDate(classId, Date(currentDay, currentMonth, currentYear))
 
                         AlarmManager.cancelMatcherAlarm(context)
                     }
