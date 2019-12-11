@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.dtos.ProfessorClassInfoDto
 import com.cin.ufpe.br.aque.dtos.StudentClassInfoDto
+import kotlinx.android.synthetic.main.professor_class_item.view.*
 import kotlinx.android.synthetic.main.student_class_item.view.*
 
 class ProfessorClassAdapter : RecyclerView.Adapter<ProfessorClassAdapter.ViewHolder>() {
@@ -18,18 +19,19 @@ class ProfessorClassAdapter : RecyclerView.Adapter<ProfessorClassAdapter.ViewHol
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.professor_class_item, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.professor_class_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("not implemented")
+        val classInfo = classInfos[position]
+        holder.className.text = classInfo.className
+        holder.classId.text = classInfo.classId
     }
 
     class ViewHolder (item : View) : RecyclerView.ViewHolder(item) {
-//        val className = item.student_class_name
-//        val classProfessorName = item.student_class_professor_name
-//        val firstSchedule = item.student_class_first_schedule
-//        val secondeSchedule = item.student_class_second_schedule
+        val className = item.professor_class_name
+        val classId = item.professor_class_id
     }
 }

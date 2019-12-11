@@ -33,6 +33,7 @@ class HomeStudentActivity : AppCompatActivity() {
         var locationManager = LocationManager()
 
         locationManager.requestLocation(this)
+
         classes_list.layoutManager = LinearLayoutManager(this)
         val adapter = StudentClassAdapter()
 
