@@ -18,7 +18,7 @@ class AlarmManager {
             Log.i(TAG, "Setting alarm to wake up everyday at 6am")
             val calendar: Calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
-                set(Calendar.HOUR_OF_DAY, 6)
+                set(Calendar.HOUR_OF_DAY, 21)
             }
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, LocationAlarmReceiver::class.java).let { intent ->
@@ -69,7 +69,7 @@ class AlarmManager {
         }
 
         fun setMatcherAlarm(ctx: Context, currentClass: com.cin.ufpe.br.aque.models.Class) {
-            Log.i(TAG, "Setting up matcher alarm to wake up in 2 minutes")
+            Log.i(TAG, "Setting up matcher alarm to wake up in 1 minute")
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, MatcherAlarmReceiver::class.java).let { intent ->
                 intent.putExtra(EXTRA_CLASS_ID, currentClass.classId)
