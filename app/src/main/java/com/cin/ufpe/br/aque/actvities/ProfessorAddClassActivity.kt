@@ -12,17 +12,22 @@ import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Class
 import com.cin.ufpe.br.aque.models.ClassDescription
+import com.cin.ufpe.br.aque.models.Professor
 import com.cin.ufpe.br.aque.models.UserClass
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_professor_add_class.*
+import kotlinx.android.synthetic.main.activity_student_login.*
 import org.jetbrains.anko.doAsync
 
 
 class ProfessorAddClassActivity : AppCompatActivity() {
+    private val firebase = FirebaseManager()
     val DAYS_OF_WEEK = arrayOf("Segunda", "Terça", "Quarta", "Quinta", "Sexta")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_professor_add_class)
+        val sharedPreferences = SharedPreferencesManager(applicationContext)
 
         val daysOfWeekAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, DAYS_OF_WEEK)
         daysOfWeekAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -67,15 +72,23 @@ class ProfessorAddClassActivity : AppCompatActivity() {
             } else {
                 var classId = generateClassId()
                 var className = add_professor_class_name.text.toString()
-                var firstDay = first_class_day_spinner.selectedItemPosition + 2
-                var secondDay = second_class_day_spinner.selectedItemPosition + 2
+                var firstDay = first_class_day_spinner.selectedItemPosition + 1
+                var secondDay = second_class_day_spinner.selectedItemPosition + 1
                 var firstDayStartHour = firstDayStartHour.toInt()
                 var firstDayEndHour = firstDayEndHour.toInt()
                 var secondDayStartHour= secondDayStartHour.toInt()
                 var secondDayEndHour = secondDayEndHour.toInt()
+                val task = firebase.getProfessor(sharedPreferences.getUserId())
 
+                while(!task.isComplete) {
+                    Log.i("task","not completed")
+                }
 
-                var classDecription = ClassDescription(classId, className, firstDay,
+                val professor = task.result!!
+                .toObject(Professor::class.java) as Professor
+
+                var classDecription = ClassDescription(classId, className,
+                    professor.name, firstDay,
                     secondDay, firstDayStartHour , firstDayEndHour,
                     secondDayStartHour, secondDayEndHour)
 

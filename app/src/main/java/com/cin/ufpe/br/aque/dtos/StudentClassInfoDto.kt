@@ -8,8 +8,8 @@ class StudentClassInfoDto(val className: String,
                           val professorName: String,
                           val firstDayOfWeek: DayOfWeek,
                           val secondDayOfWeek: DayOfWeek,
-                          val firstStartTime: LocalTime,
-                          val secondStartTime: LocalTime,
-                          val firstEndTime: LocalTime,
-                          val secondEndTime: LocalTime) {
+                          val firstStartTime: Int,
+                          val secondStartTime: Int,
+                          val firstEndTime: Int,
+                          val secondEndTime: Int) {
 }

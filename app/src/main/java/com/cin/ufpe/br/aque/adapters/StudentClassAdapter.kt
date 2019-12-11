@@ -31,8 +31,8 @@ class StudentClassAdapter : RecyclerView.Adapter<StudentClassAdapter.ViewHolder>
 
         holder.className.text = classItem.className
         holder.classProfessorName.text = classItem.professorName
-        holder.firstSchedule.text = DayOfWeekUtils.getPortugueseDayOfWeek(classItem.firstDayOfWeek)
-        holder.secondeSchedule.text = DayOfWeekUtils.getPortugueseDayOfWeek(classItem.secondDayOfWeek)
+        holder.firstSchedule.text = DayOfWeekUtils.getPortugueseDayOfWeek(classItem.firstDayOfWeek) + " - " + classItem.firstStartTime + " às " + classItem.firstEndTime
+        holder.secondeSchedule.text = DayOfWeekUtils.getPortugueseDayOfWeek(classItem.secondDayOfWeek) + " - " + classItem.secondStartTime + " às " + classItem.secondEndTime
     }
 
     class ViewHolder (item : View) : RecyclerView.ViewHolder(item) {

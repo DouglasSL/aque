@@ -43,7 +43,7 @@ class FirebaseManager {
 
     fun saveUserClass(path: String, userClass: UserClass) {
         db.collection(path)
-            .document(userClass.classId)
+            .document(userClass.classId!!)
             .set(userClass)
             .addOnSuccessListener {
                 Log.d(TAG, "Saved userClass  on Firebase")
@@ -51,10 +51,17 @@ class FirebaseManager {
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error saving userClass", e)
             }
+
+        db.collection(path+"$"+userClass.userId)
+            .add(userClass)
     }
 
     fun getClassDescription(classId: String) : Task<DocumentSnapshot>{
         return db.collection("class_description").document(classId).get()
+    }
+
+    fun getUserClasses(path: String, userId: String): Task<QuerySnapshot> {
+        return db.collection("$path$$userId").get()
     }
 
     fun getUsersLocations(path: String) : Task<QuerySnapshot> {
