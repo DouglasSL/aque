@@ -20,6 +20,7 @@ import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
 import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
+import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Student
@@ -134,6 +135,7 @@ class StudentLoginActivity : AppCompatActivity() {
         val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(true)
+        AlarmManager.setRoutineAlarm(applicationContext)
         startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
     }
 

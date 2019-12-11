@@ -43,6 +43,10 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                 firebaseManager.getUsersLocations("${sharedPreferences.getUserId()}_$currentDay")
                     .addOnSuccessListener { documents  ->
                         Log.i(TAG, "Found teacher locations")
+                        if (documents.size() == 0){
+                            Log.i(TAG, "Empty documents")
+                            return@addOnSuccessListener
+                        }
                         var teacherLocations = documents.first().toObject(UserLocation::class.java)
                         firebaseManager.deleteCollection("${className}_$currentDay")
                         firebaseManager.deleteCollection("${sharedPreferences.getUserId()}_$currentDay")
