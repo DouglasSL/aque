@@ -20,6 +20,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
     private val TAG = MatcherAlarmReceiver::class.simpleName
 
     override fun onReceive(context: Context, intent: Intent) {
+        Log.i(TAG, "Matcher Alarm")
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_WEEK)
         val currentMonth = calendar.get(Calendar.MONTH)
@@ -31,6 +32,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
         var sharedPreferences = SharedPreferencesManager(context)
         firebaseManager.getUsersLocations("${className}_$currentDay")
             .addOnSuccessListener { documents  ->
+                Log.i(TAG, "Found students locations")
                 var studentsLocations = mutableListOf<UserLocation>()
                 for (document in documents) {
                     var userLocation = document.toObject(UserLocation::class.java)
@@ -39,6 +41,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
 
                 firebaseManager.getUsersLocations("${sharedPreferences.getUserId()}_$currentDay")
                     .addOnSuccessListener { documents  ->
+                        Log.i(TAG, "Found teacher locations")
                         var teacherLocations = documents.first().toObject(UserLocation::class.java)
                         firebaseManager.deleteCollection("${className}_$currentDay")
                         firebaseManager.deleteCollection("${sharedPreferences.getUserId()}_$currentDay")
@@ -74,6 +77,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                                 presentStudents.add(studentLocation.id)
                             }
                         }
+                        Log.i(TAG, "Saving present students")
 
                         var docPath = "${classId}_${currentDay}_${currentMonth}_${currentYear}"
                         var pStudents = PresentStudents(currentDay, currentMonth, currentYear, presentStudents)

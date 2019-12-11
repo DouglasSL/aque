@@ -20,12 +20,32 @@ class AlarmManager {
                 timeInMillis = System.currentTimeMillis()
                 set(Calendar.HOUR_OF_DAY, 6)
             }
-            setRepeatAlarm(ctx, calendar.timeInMillis, AlarmManager.INTERVAL_DAY, RoutineAlarmReceiver::class.java)
+            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmIntent: PendingIntent = Intent(ctx, LocationAlarmReceiver::class.java).let { intent ->
+                PendingIntent.getBroadcast(ctx, 0, intent, 0)
+            }
+
+            alarmManager.setRepeating(
+                AlarmManager.ELAPSED_REALTIME,
+                calendar.timeInMillis,
+                AlarmManager.INTERVAL_DAY,
+                alarmIntent
+            )
         }
 
         fun setLocationAlarm(ctx: Context) {
             Log.i(TAG, "Setting up location alarm to wake every fifteen minutes")
-            setRepeatAlarm(ctx, SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_FIFTEEN_MINUTES, AlarmManager.INTERVAL_FIFTEEN_MINUTES, LocationAlarmReceiver::class.java)
+            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmIntent: PendingIntent = Intent(ctx, LocationAlarmReceiver::class.java).let { intent ->
+                PendingIntent.getBroadcast(ctx, 0, intent, 0)
+            }
+
+            alarmManager.setRepeating(
+                AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+                AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+                alarmIntent
+            )
         }
 
         fun setClassAlarm(ctx: Context, hour: Int, minute: Int, code: Int, action: String) {
@@ -49,6 +69,7 @@ class AlarmManager {
         }
 
         fun setMatcherAlarm(ctx: Context, currentClass: com.cin.ufpe.br.aque.models.Class) {
+            Log.i(TAG, "Setting up matcher alarm to wake up in 2 minutes")
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, MatcherAlarmReceiver::class.java).let { intent ->
                 intent.putExtra(EXTRA_CLASS_ID, currentClass.classId)
@@ -56,23 +77,9 @@ class AlarmManager {
                 PendingIntent.getBroadcast(ctx, 0, intent, 0)
             }
 
-            alarmManager.set(
+            alarmManager?.set(
                 AlarmManager.ELAPSED_REALTIME,
-                SystemClock.elapsedRealtime() + 2 * 60 * 1000,
-                alarmIntent
-            )
-        }
-
-        private fun setRepeatAlarm(ctx: Context, startTime: Long, interval: Long, receiver: Class<out BroadcastReceiver>) {
-            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val alarmIntent: PendingIntent = Intent(ctx, receiver::class.java).let { intent ->
-                PendingIntent.getBroadcast(ctx, 0, intent, 0)
-            }
-
-            alarmManager.setInexactRepeating(
-                AlarmManager.ELAPSED_REALTIME,
-                startTime,
-                interval,
+                SystemClock.elapsedRealtime() + 60 * 1000,
                 alarmIntent
             )
         }

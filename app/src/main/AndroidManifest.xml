@@ -26,11 +26,6 @@
         <activity android:name=".actvities.HomeProfessorActivity" />
         <activity android:name=".actvities.StudentAddClassActivity" />
 
-        <receiver
-            android:name=".receivers.LocationAlarmReceiver"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity android:name=".actvities.HomeStudentActivity" />
         <activity android:name=".actvities.MainActivity">
             <intent-filter>
@@ -42,6 +37,8 @@
 
         <receiver android:name=".receivers.RoutineAlarmReceiver" />
         <receiver android:name=".receivers.ClassAlarmReceiver" />
+        <receiver android:name=".receivers.LocationAlarmReceiver" />
+        <receiver android:name=".receivers.MatcherAlarmReceiver" />
     </application>
 
 </manifest>
