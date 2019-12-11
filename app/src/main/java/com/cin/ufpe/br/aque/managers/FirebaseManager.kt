@@ -79,12 +79,30 @@ class FirebaseManager {
         db.collection("student")
             .document(student.email!!)
             .set(student)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener {
                 Log.d(TAG, "Student ${student.email} saved on Firebase")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error saving student", e)
             }
+    }
+
+    fun savePresentStudents(docPath: String, presentStudents: PresentStudents) {
+        db.collection("present_students")
+            .document(docPath)
+            .set(presentStudents)
+            .addOnSuccessListener {
+                Log.d(TAG, "Present students of $docPath saved on Firebase")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error saving Present students of $docPath", e)
+            }
+    }
+
+    fun getPresentStudents(docPath: String) : Task<DocumentSnapshot> {
+        return db.collection("present_students")
+            .document(docPath)
+            .get()
     }
 
     fun getStudent(email: String): Task<DocumentSnapshot> {
@@ -97,7 +115,7 @@ class FirebaseManager {
         db.collection("professor")
             .document(professor.email!!)
             .set(professor)
-            .addOnSuccessListener { documentReference ->
+            .addOnSuccessListener {
                 Log.d(TAG, "Professor ${professor.email} saved on Firebase")
             }
             .addOnFailureListener { e ->

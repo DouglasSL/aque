@@ -69,23 +69,19 @@ class ProfessorAddClassActivity : AppCompatActivity() {
                 var className = add_professor_class_name.text.toString()
                 var firstDay = first_class_day_spinner.selectedItemPosition + 2
                 var secondDay = second_class_day_spinner.selectedItemPosition + 2
-                var firstDayStartHour = firstDayStartHour.toInt()
-                var firstDayEndHour = firstDayEndHour.toInt()
-                var secondDayStartHour= secondDayStartHour.toInt()
-                var secondDayEndHour = secondDayEndHour.toInt()
 
 
                 var classDecription = ClassDescription(classId, className, firstDay,
-                    secondDay, firstDayStartHour , firstDayEndHour,
-                    secondDayStartHour, secondDayEndHour)
+                    secondDay, firstDayStartHour.toInt() , firstDayEndHour.toInt(),
+                    secondDayStartHour.toInt(), secondDayEndHour.toInt())
 
                 var firebaseManager = FirebaseManager()
                 firebaseManager.saveClassDescription(classDecription)
 
                 doAsync {
                     var db = ClassDB.getDatabase(applicationContext)
-                    var classFirstDay = Class(0, className, firstDay, firstDayStartHour, firstDayEndHour)
-                    var classSecondDay = Class(0, className, secondDay, secondDayStartHour, secondDayEndHour)
+                    var classFirstDay = Class(0, classId, className, firstDay, firstDayStartHour.toInt(), firstDayEndHour.toInt())
+                    var classSecondDay = Class(0,classId, className, secondDay, secondDayStartHour.toInt(), secondDayEndHour.toInt())
 
                     db.ClassDAO().add(classFirstDay)
                     db.ClassDAO().add(classSecondDay)
