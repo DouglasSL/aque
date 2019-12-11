@@ -14,9 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".actvities.ClassStudentsActivity"></activity>
+        <activity android:name=".actvities.ClassDetailActivity" />
         <activity
             android:name=".ui.login.professor.ProfessorLoginActivity"
-            android:label="@string/title_activity_professor_login"></activity>
+            android:label="@string/title_activity_professor_login" />
         <activity android:name=".actvities.StudentRegisterActivity" />
         <activity android:name=".actvities.ProfessorRegisterActivity" />
         <activity
@@ -25,7 +27,6 @@
         <activity android:name=".actvities.ProfessorAddClassActivity" />
         <activity android:name=".actvities.HomeProfessorActivity" />
         <activity android:name=".actvities.StudentAddClassActivity" />
-
         <activity android:name=".actvities.HomeStudentActivity" />
         <activity android:name=".actvities.MainActivity">
             <intent-filter>

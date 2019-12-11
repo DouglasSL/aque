@@ -123,7 +123,7 @@ class FirebaseManager {
             }
     }
 
-    fun getClassDate(classId: String): Task<QuerySnapshot> {
+    fun getClassDates(classId: String): Task<QuerySnapshot> {
         return db.collection("${classId}_date").get()
     }
 

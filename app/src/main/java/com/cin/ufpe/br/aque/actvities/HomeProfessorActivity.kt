@@ -30,10 +30,10 @@ class HomeProfessorActivity : AppCompatActivity() {
 
         professor_classes_list.layoutManager = LinearLayoutManager(this)
         val adapter = ProfessorClassAdapter()
+        adapter.activityOwner = this
 
         doAsync {
             val userId = sharedPreferences.getUserId()
-            Log.i("xalala", userId)
 
             firebase.getUserClasses("professor_class", userId)
                 .addOnSuccessListener {documents ->
@@ -62,7 +62,6 @@ class HomeProfessorActivity : AppCompatActivity() {
                         )
                     }
 
-                    Log.i("list size", professorClasses.size.toString())
                     uiThread {
                         adapter.classInfos = professorClasses
                         professor_classes_list.adapter = adapter
