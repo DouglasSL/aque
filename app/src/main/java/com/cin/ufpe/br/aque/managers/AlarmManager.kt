@@ -48,16 +48,17 @@ class AlarmManager {
             )
         }
 
-        fun setMatcherAlarm(ctx: Context, className: String) {
+        fun setMatcherAlarm(ctx: Context, currentClass: com.cin.ufpe.br.aque.models.Class) {
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, MatcherAlarmReceiver::class.java).let { intent ->
-                intent.putExtra(EXTRA_CLASS_NAME, className)
+                intent.putExtra(EXTRA_CLASS_ID, currentClass.classId)
+                intent.putExtra(EXTRA_CLASS_NAME, currentClass.className)
                 PendingIntent.getBroadcast(ctx, 0, intent, 0)
             }
 
             alarmManager.set(
                 AlarmManager.ELAPSED_REALTIME,
-                SystemClock.elapsedRealtime() + 60 * 1000,
+                SystemClock.elapsedRealtime() + 2 * 60 * 1000,
                 alarmIntent
             )
         }

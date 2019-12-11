@@ -49,7 +49,7 @@ class ClassAlarmReceiver : BroadcastReceiver() {
                 firebase.saveUserLocations("${currentClass.className}_${currentClass.day}", userId, locations)
             } else {
                 firebase.saveUserLocations("${userId}_${currentClass.day}", userId, locations)
-                AlarmManager.setMatcherAlarm(context, currentClass.className)
+                AlarmManager.setMatcherAlarm(context, currentClass)
             }
 
             db.LocationDAO().clear()

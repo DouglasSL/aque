@@ -97,8 +97,8 @@ class ProfessorAddClassActivity : AppCompatActivity() {
 
                 doAsync {
                     var db = ClassDB.getDatabase(applicationContext)
-                    var classFirstDay = Class(0, className, firstDay, firstDayStartHour, firstDayEndHour)
-                    var classSecondDay = Class(0, className, secondDay, secondDayStartHour, secondDayEndHour)
+                    var classFirstDay = Class(0, classId, className, firstDay, firstDayStartHour.toInt(), firstDayEndHour.toInt())
+                    var classSecondDay = Class(0,classId, className, secondDay, secondDayStartHour.toInt(), secondDayEndHour.toInt())
 
                     db.ClassDAO().add(classFirstDay)
                     db.ClassDAO().add(classSecondDay)

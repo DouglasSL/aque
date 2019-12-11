@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class Class(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
+    var classId: String,
     var className: String,
     var day: Int,
     var startHour: Int,

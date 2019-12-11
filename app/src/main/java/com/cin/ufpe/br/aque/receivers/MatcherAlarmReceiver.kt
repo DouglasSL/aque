@@ -9,8 +9,10 @@ import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Location
+import com.cin.ufpe.br.aque.models.PresentStudents
 import com.cin.ufpe.br.aque.models.UserLocation
 
+const val EXTRA_CLASS_ID = "class_id"
 const val EXTRA_CLASS_NAME = "class_name"
 
 class MatcherAlarmReceiver : BroadcastReceiver() {
@@ -20,6 +22,9 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_WEEK)
+        val currentMonth = calendar.get(Calendar.MONTH)
+        val currentYear = calendar.get(Calendar.YEAR)
+        var classId = intent.getStringExtra(EXTRA_CLASS_ID)
         var className = intent.getStringExtra(EXTRA_CLASS_NAME)
 
         var firebaseManager = FirebaseManager()
@@ -69,6 +74,10 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                                 presentStudents.add(studentLocation.id)
                             }
                         }
+
+                        var docPath = "${classId}_${currentDay}_${currentMonth}_${currentYear}"
+                        var pStudents = PresentStudents(currentDay, currentMonth, currentYear, presentStudents)
+                        firebaseManager.savePresentStudents(docPath, pStudents)
 
                         AlarmManager.cancelMatcherAlarm(context)
                     }
