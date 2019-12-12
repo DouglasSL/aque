@@ -23,6 +23,7 @@ import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Professor
 import com.cin.ufpe.br.aque.ui.login.student.afterTextChanged
+import com.cin.ufpe.br.aque.utils.Utils
 
 class ProfessorLoginActivity : AppCompatActivity() {
 
@@ -135,6 +136,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(false)
         AlarmManager.setRoutineAlarm(applicationContext)
+        Utils.checkForClass(applicationContext, "professor_class", model.email)
         startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
     }
 

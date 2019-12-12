@@ -24,6 +24,7 @@ import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Student
+import com.cin.ufpe.br.aque.utils.Utils
 
 class StudentLoginActivity : AppCompatActivity() {
 
@@ -136,6 +137,7 @@ class StudentLoginActivity : AppCompatActivity() {
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(true)
         AlarmManager.setRoutineAlarm(applicationContext)
+        Utils.checkForClass(applicationContext, "student_class", model.email)
         startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
     }
 
