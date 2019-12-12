@@ -21,11 +21,11 @@ class AlarmManager {
                 set(Calendar.HOUR_OF_DAY, 6)
             }
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            val alarmIntent: PendingIntent = Intent(ctx, LocationAlarmReceiver::class.java).let { intent ->
+            val alarmIntent: PendingIntent = Intent(ctx, RoutineAlarmReceiver::class.java).let { intent ->
                 PendingIntent.getBroadcast(ctx, 0, intent, 0)
             }
 
-            alarmManager.setRepeating(
+            alarmManager?.setRepeating(
                 AlarmManager.ELAPSED_REALTIME,
                 calendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
