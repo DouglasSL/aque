@@ -15,24 +15,26 @@ class Utils {
         private val TAG = Utils::class.simpleName
 
         fun checkForClass(ctx: Context, path: String, email: String) {
-            Log.e(TAG, "Checking for classes")
+            Log.i(TAG, "Checking for classes")
             doAsync {
                 var db = ClassDB.getDatabase(ctx)
                 var classes = db.ClassDAO().all()
                 if (classes.isEmpty()) {
-                    Log.e(TAG, "There are no classes on local db, checking on firebase")
+                    Log.i(TAG, "There are no classes on local db, checking on firebase")
                     var firebaseManager = FirebaseManager()
                     firebaseManager.getUserClasses(path, email).addOnSuccessListener { documents  ->
                         if (documents.isEmpty) {
                             return@addOnSuccessListener
                         }
-                        Log.e(TAG, "Found classes on firebase")
+                        Log.i(TAG, "Found classes on firebase")
                         for (document in documents) {
                             var userClass = document.toObject(UserClass::class.java)
                             firebaseManager.getClassDescription(userClass.classId!!).addOnSuccessListener { classDescDoc ->
                                 var classDesc = classDescDoc.toObject(ClassDescription::class.java)
-                                db.ClassDAO().add(Class(0, classDesc?.id!!,classDesc?.className!!, classDesc?.firstDay!!, classDesc?.firstDayStartHour!!,classDesc?.firstDayEndHour!!))
-                                db.ClassDAO().add(Class(0, classDesc?.id!!,classDesc?.className!!, classDesc?.secondDay!!, classDesc?.secondDayStartHour!!,classDesc?.secondDayEndHour!!))
+                                doAsync {
+                                    db.ClassDAO().add(Class(0, classDesc?.id!!,classDesc?.className!!, classDesc?.firstDay!!, classDesc?.firstDayStartHour!!,classDesc?.firstDayEndHour!!))
+                                    db.ClassDAO().add(Class(0, classDesc?.id!!,classDesc?.className!!, classDesc?.secondDay!!, classDesc?.secondDayStartHour!!,classDesc?.secondDayEndHour!!))
+                                }
                             }.addOnFailureListener { exception ->
 
                                 Log.e(TAG, "Error getting class description $exception")

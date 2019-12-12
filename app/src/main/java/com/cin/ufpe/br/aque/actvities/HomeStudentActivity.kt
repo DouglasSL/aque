@@ -2,6 +2,7 @@ package com.cin.ufpe.br.aque.actvities
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,7 +11,6 @@ import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.adapters.StudentClassAdapter
 import com.cin.ufpe.br.aque.dtos.StudentClassInfoDto
 import com.cin.ufpe.br.aque.managers.FirebaseManager
-import com.cin.ufpe.br.aque.managers.LocationManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.UserClass
@@ -58,8 +58,8 @@ class HomeStudentActivity : AppCompatActivity() {
                             StudentClassInfoDto(
                                 classDescription.className!!,
                                 classDescription.professorName!!,
-                                DayOfWeek.of(classDescription.firstDay!!),
-                                DayOfWeek.of(classDescription.secondDay!!),
+                                classDescription.firstDay!!,
+                                classDescription.secondDay!!,
                                 classDescription.firstDayStartHour!!,
                                 classDescription.secondDayStartHour!!,
                                 classDescription.firstDayEndHour!!,

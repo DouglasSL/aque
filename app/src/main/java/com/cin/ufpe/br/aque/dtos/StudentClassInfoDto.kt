@@ -6,8 +6,8 @@ import java.time.LocalTime
 
 class StudentClassInfoDto(val className: String,
                           val professorName: String,
-                          val firstDayOfWeek: DayOfWeek,
-                          val secondDayOfWeek: DayOfWeek,
+                          val firstDayOfWeek: Int,
+                          val secondDayOfWeek: Int,
                           val firstStartTime: Int,
                           val secondStartTime: Int,
                           val firstEndTime: Int,

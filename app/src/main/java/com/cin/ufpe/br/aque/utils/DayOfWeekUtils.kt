@@ -7,26 +7,26 @@ import java.time.DayOfWeek
 
 object DayOfWeekUtils {
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getPortugueseDayOfWeek(dayOfWeek: DayOfWeek) : String {
-        if(dayOfWeek == DayOfWeek.MONDAY) {
+    fun getPortugueseDayOfWeek(dayOfWeek: Int) : String {
+        if(dayOfWeek == 2) {
             return "Segunda"
         }
-        if(dayOfWeek == DayOfWeek.TUESDAY) {
+        if(dayOfWeek == 3) {
             return "Terça"
         }
-        if(dayOfWeek == DayOfWeek.WEDNESDAY) {
+        if(dayOfWeek == 4) {
             return "Quarta"
         }
-        if(dayOfWeek == DayOfWeek.THURSDAY) {
+        if(dayOfWeek == 5) {
             return "Quinta"
         }
-        if(dayOfWeek == DayOfWeek.FRIDAY) {
+        if(dayOfWeek == 6) {
             return "Sexta"
         }
-        if(dayOfWeek == DayOfWeek.SATURDAY) {
+        if(dayOfWeek == 7) {
             return "Sábado"
         }
-        if(dayOfWeek == DayOfWeek.SUNDAY) {
+        if(dayOfWeek == 1) {
             return "Domingo"
         }
 
