@@ -72,8 +72,8 @@ class ProfessorAddClassActivity : AppCompatActivity() {
             } else {
                 var classId = generateClassId()
                 var className = add_professor_class_name.text.toString()
-                var firstDay = first_class_day_spinner.selectedItemPosition + 1
-                var secondDay = second_class_day_spinner.selectedItemPosition + 1
+                var firstDay = first_class_day_spinner.selectedItemPosition + 2
+                var secondDay = second_class_day_spinner.selectedItemPosition + 2
                 var firstDayStartHour = firstDayStartHour.toInt()
                 var firstDayEndHour = firstDayEndHour.toInt()
                 var secondDayStartHour= secondDayStartHour.toInt()
