@@ -42,16 +42,6 @@ class FirebaseManager {
     }
 
     fun saveUserClass(path: String, userClass: UserClass) {
-        db.collection(path)
-            .document(userClass.classId!!)
-            .set(userClass)
-            .addOnSuccessListener {
-                Log.d(TAG, "Saved userClass  on Firebase")
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error saving userClass", e)
-            }
-
         db.collection(path+"$"+userClass.userId)
             .add(userClass)
     }
