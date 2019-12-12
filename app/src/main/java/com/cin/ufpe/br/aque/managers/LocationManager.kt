@@ -15,7 +15,7 @@ class LocationManager : LocationListener {
     private val TAG = com.cin.ufpe.br.aque.managers.LocationManager::class.java.simpleName
 
     fun requestLocation(ctx : Context) {
-        Log.i(TAG, "Requesting Location Update")
+            Log.i(TAG, "Requesting Location Update")
         val locationManager: LocationManager = ctx.getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if (PermissionManager.checkLocationPermission(ctx)) {
             locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, this, null)

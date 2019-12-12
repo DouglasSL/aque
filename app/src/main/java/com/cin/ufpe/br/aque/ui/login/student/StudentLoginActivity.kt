@@ -20,11 +20,14 @@ import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
 import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
+import com.cin.ufpe.br.aque.database.ClassDB
 import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
+import com.cin.ufpe.br.aque.models.Class
 import com.cin.ufpe.br.aque.models.Student
 import com.cin.ufpe.br.aque.utils.Utils
+import org.jetbrains.anko.doAsync
 
 class StudentLoginActivity : AppCompatActivity() {
 

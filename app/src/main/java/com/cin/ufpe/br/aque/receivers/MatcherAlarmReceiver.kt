@@ -79,7 +79,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                             }
 
                             if (occurrence / locations.size >= 0.65) {
-                                presentStudents.add(studentLocation.id)
+                                presentStudents.add(studentLocation.id!!)
                             }
                         }
                         Log.i(TAG, "Saving present students")

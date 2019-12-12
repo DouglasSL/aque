@@ -45,7 +45,7 @@ class ClassAlarmReceiver : BroadcastReceiver() {
             var firebase = FirebaseManager()
 
             var userId = sharedPreferences.getUserId()
-            if (!sharedPreferences.isStudent()){
+            if (sharedPreferences.isStudent()){
                 firebase.saveUserLocations("${currentClass.className}_${currentClass.day}", userId, locations)
             } else {
                 firebase.saveUserLocations("${userId}_${currentClass.day}", userId, locations)

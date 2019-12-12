@@ -26,7 +26,7 @@ class AlarmManager {
             }
 
             alarmManager?.setRepeating(
-                AlarmManager.ELAPSED_REALTIME,
+                AlarmManager.RTC,
                 calendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 alarmIntent
@@ -62,7 +62,7 @@ class AlarmManager {
             }
 
             alarmManager.set(
-                AlarmManager.ELAPSED_REALTIME,
+                AlarmManager.RTC,
                 calendar.timeInMillis,
                 alarmIntent
             )
