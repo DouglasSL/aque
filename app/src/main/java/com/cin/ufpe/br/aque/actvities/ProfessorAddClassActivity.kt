@@ -57,18 +57,16 @@ class ProfessorAddClassActivity : AppCompatActivity() {
             var firstSpinner = first_class_day_spinner.selectedItem as String
             var secondSpinner = second_class_day_spinner.selectedItem as String
 
-            if (firstSpinner.equals(secondSpinner)) {
-                if (firstDayStartHour.equals(secondDayStartHour) ||
-                    firstDayEndHour.equals(secondDayEndHour)) {
-                    Toast.makeText(applicationContext,
-                        "Dias e horas são iguais",
-                        Toast.LENGTH_SHORT).show()
-                } else if (firstDayStartHour.equals(firstDayEndHour) ||
-                    secondDayStartHour.equals(secondDayEndHour)) {
-                    Toast.makeText(applicationContext,
-                        "horas iguais no mesmo dia",
-                        Toast.LENGTH_SHORT).show()
-                }
+            if (firstSpinner.equals(secondSpinner) && (firstDayStartHour.equals(secondDayStartHour) ||
+                        firstDayEndHour.equals(secondDayEndHour))) {
+                Toast.makeText(applicationContext,
+                    "Dias e horas são iguais",
+                    Toast.LENGTH_SHORT).show()
+            } else if (firstSpinner.equals(secondSpinner) && (firstDayStartHour.equals(firstDayEndHour) ||
+                        secondDayStartHour.equals(secondDayEndHour))) {
+                Toast.makeText(applicationContext,
+                    "horas iguais no mesmo dia",
+                    Toast.LENGTH_SHORT).show()
             } else {
                 var classId = generateClassId()
                 var className = add_professor_class_name.text.toString()

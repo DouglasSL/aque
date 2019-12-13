@@ -19,6 +19,7 @@ class AlarmManager {
             val calendar: Calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
                 set(Calendar.HOUR_OF_DAY, 6)
+                set(Calendar.MINUTE, 0)
             }
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, RoutineAlarmReceiver::class.java).let { intent ->

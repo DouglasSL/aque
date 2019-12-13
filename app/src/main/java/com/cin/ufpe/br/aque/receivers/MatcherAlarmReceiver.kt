@@ -53,17 +53,17 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
 
                         //match logic
                         var locations = teacherLocations.locations
-                        var teacherLocation = locations.get(0)
+                        var teacherLocation = locations!!.get(0)
                         var mostOccurrence = 0
-                        for (i in 0..(locations.size)) {
+                        for (i in 0..(locations!!.size)) {
                             var occurrence = 0
-                            for (j in 0..(locations.size)) {
-                                if (distance(locations.get(i), locations.get(j)) <= 10){
+                            for (j in 0..(locations!!.size)) {
+                                if (distance(locations!!.get(i), locations!!.get(j)) <= 10){
                                     occurrence += 1
                                 }
                             }
                             if (occurrence > mostOccurrence) {
-                                teacherLocation = locations.get(i)
+                                teacherLocation = locations!!.get(i)
                                 mostOccurrence = occurrence
                             }
                         }
@@ -72,13 +72,13 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                         for (studentLocation in studentsLocations) {
                             locations = studentLocation.locations
                             var occurrence = 0
-                            for (location in locations) {
+                            for (location in locations!!) {
                                 if (distance(teacherLocation, location) <= 20) {
                                     occurrence += 1
                                 }
                             }
 
-                            if (occurrence / locations.size >= 0.65) {
+                            if (occurrence / locations!!.size >= 0.65) {
                                 presentStudents.add(studentLocation.id!!)
                             }
                         }
@@ -102,8 +102,8 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
 
     private fun distance(location1: Location, location2: Location) : Double {
             var R = 6371 * 1000; // Earth's radius in m
-            return Math.acos(Math.sin(location1.lat)*Math.sin(location2.lat) +
-                    Math.cos(location1.lat)*Math.cos(location2.lat) *
-                    Math.cos(location1.lng-location2.lng)) * R;
+            return Math.acos(Math.sin(location1.lat!!)*Math.sin(location2.lat!!) +
+                    Math.cos(location1.lat!!)*Math.cos(location2.lat!!) *
+                    Math.cos(location1.lng!!-location2.lng!!)) * R;
     }
 }

@@ -63,7 +63,7 @@ class ClassDetailActivity : AppCompatActivity() {
                                 day,
                                 month,
                                 year,
-                                presentStudents.students.size
+                                presentStudents.students!!.size
                             )
                         )
                     }

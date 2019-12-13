@@ -18,7 +18,7 @@ interface ClassDAO {
     @Query("SELECT * FROM class WHERE day = :day ORDER BY startHour LIMIT 1")
     fun getFirstClass(day: Int) : Class
 
-    @Query("SELECT * FROM class WHERE day = :day AND startHour >= :hour LIMIT 1")
+    @Query("SELECT * FROM class WHERE day = :day AND startHour > :hour LIMIT 1")
     fun getNextClass(day: Int, hour: Int) : Class?
 
     @Query("SELECT * FROM class")

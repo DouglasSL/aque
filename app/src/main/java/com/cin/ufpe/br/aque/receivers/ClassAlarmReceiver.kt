@@ -27,11 +27,15 @@ class ClassAlarmReceiver : BroadcastReceiver() {
         if (intent.action.equals(ACTION_START_CLASS_ALARM)) {
             Log.i(TAG, "Start class alarm: requesting Alarm Manager to update locations")
             AlarmManager.setLocationAlarm(context)
+            AlarmManager.cancelClassAlarm(context, CODE_START_CLASS_ALARM)
+            return
+        } else if (!intent.action.equals(ACTION_END_CLASS_ALARM)){
+            Log.i(TAG, "Different intent action")
             return
         }
 
         Log.i(TAG, "End class alarm: disabling current alarms")
-        AlarmManager.cancelClassAlarm(context, CODE_START_CLASS_ALARM)
+
         AlarmManager.cancelClassAlarm(context, C0DE_END_CLASS_ALARM)
 
         var sharedPreferences = SharedPreferencesManager(context)
