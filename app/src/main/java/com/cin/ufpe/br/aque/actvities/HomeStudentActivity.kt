@@ -15,6 +15,7 @@ import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.UserClass
 import kotlinx.android.synthetic.main.activity_home_student.*
+import leakcanary.AppWatcher
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import java.time.DayOfWeek
@@ -27,6 +28,8 @@ class HomeStudentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_student)
+
+        AppWatcher.objectWatcher.watch(this)
 
         val sharedPreferences = SharedPreferencesManager(applicationContext)
 

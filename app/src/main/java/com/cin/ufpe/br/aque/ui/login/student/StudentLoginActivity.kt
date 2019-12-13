@@ -25,6 +25,7 @@ import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Student
 import com.cin.ufpe.br.aque.utils.Utils
+import leakcanary.AppWatcher
 
 class StudentLoginActivity : AppCompatActivity() {
 
@@ -34,6 +35,8 @@ class StudentLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_login)
+
+        AppWatcher.objectWatcher.watch(this)
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)

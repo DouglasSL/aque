@@ -12,6 +12,7 @@ import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Date
 import com.cin.ufpe.br.aque.models.PresentStudents
 import kotlinx.android.synthetic.main.activity_class_detail.*
+import leakcanary.AppWatcher
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -21,6 +22,8 @@ class ClassDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_class_detail)
+
+        AppWatcher.objectWatcher.watch(this)
 
         val className = intent.getStringExtra("className")
         val classId = intent.getStringExtra("classId")

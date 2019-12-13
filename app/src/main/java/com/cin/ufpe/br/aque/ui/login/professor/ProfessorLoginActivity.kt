@@ -24,6 +24,7 @@ import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Professor
 import com.cin.ufpe.br.aque.ui.login.student.afterTextChanged
 import com.cin.ufpe.br.aque.utils.Utils
+import leakcanary.AppWatcher
 
 class ProfessorLoginActivity : AppCompatActivity() {
 
@@ -33,6 +34,8 @@ class ProfessorLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_professor_login)
+
+        AppWatcher.objectWatcher.watch(this)
 
         val username = findViewById<EditText>(R.id.professor_username)
         val password = findViewById<EditText>(R.id.professor_password)

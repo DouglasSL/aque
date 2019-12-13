@@ -8,6 +8,7 @@ import com.cin.ufpe.br.aque.adapters.ClassStudentsAdapter
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.models.PresentStudents
 import kotlinx.android.synthetic.main.activity_class_students.*
+import leakcanary.AppWatcher
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -17,6 +18,8 @@ class ClassStudentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_class_students)
+
+        AppWatcher.objectWatcher.watch(this)
 
         val classId = intent.getStringExtra("classId")
         val classDay = intent.getStringExtra("classDay")
