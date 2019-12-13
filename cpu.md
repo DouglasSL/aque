@@ -20,7 +20,7 @@ activities, acesso ao firebase (imagem 1), inicialização do shared preferences
 ##### Imagem 1 - registro do usuário (inicializa o Firebase e salva dados)
 
 ![Image2](/attachments/cpu_2.png)
-##### Imagem 1 - após login do usuário (inicializa shared preferences, checa se a conta é valida e seta alarme)
+##### Imagem 2 - após login do usuário (inicializa shared preferences, checa se a conta é valida e seta alarme)
 
 ## Alarmes
 

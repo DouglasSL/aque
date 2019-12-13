@@ -16,15 +16,30 @@ Professores para criação das classes e alunos para confirmar presenças nas au
 
 Não encontramos nenhum aplicativo no mercado que possua o mesmo objetivo proposto acima, os aplicativos de chamadas que foram encontrados são meramente cadernetas de chamadas eletrônicas.
 
-### Estrutura da aplicação
+### Funcionamento
 
-[Demo](https://pr.to/P2W31X/)
+O funcionamento de presença é baseado por meio de alarmes:
+
+#### Routine Alarm
+Dispara todos os dias às 6 da manhã e é responsável por ligar os alarmes da primeira aula (início e final)
+
+#### Class Alarm
+Utiliza de extras do intent para se guiar entre início da aula e final da aula. Caso seu alarme tocar e for início de aula
+é responsável por ativar o alarme de localização. Já o de final de aula é responsável por pegar todas as localizações coletadas
+durante a aula e enviar ao Firebase, caso o usuário seja um professor, ele também ativa o alarme de matcher. Além disso,
+é também responsável por checar por próximas aulas que o usuário venha a ter.
+
+#### Location Alarm
+Fica disparando de 15 em 15 minutos para coletar a localização do usuário e salva no banco de dados local.
+
+#### Matcher Alarm
+Responsável por fazer o casamento de localizações entre professores e alunos.
 
 ### Desenvolvimento
 
 O projeto pode ser dividido entre:
 
-* Servidor 
+* Servidor - Foi utilizado o Firebase
 * Aplicação:
    - Aluno
    - Professor
