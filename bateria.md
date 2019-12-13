@@ -15,3 +15,5 @@ também mudar é que o Location Manager pede localização por meio do NETWORK_P
 e provendo um resultado mais acurado. Quando o alarme de final de classe dispara, Network vai para
 Light devido a requisição feita ao Firebase para salvar as localizações coletadas durante o periodo
 da aula.
+
+![Image 1](/attachments/alarm_bateria_location.png)
