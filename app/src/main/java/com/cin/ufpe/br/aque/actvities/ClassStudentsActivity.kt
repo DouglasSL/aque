@@ -40,7 +40,7 @@ class ClassStudentsActivity : AppCompatActivity() {
 
         doAsync {
             uiThread {
-                adapter.studentNames = presentStudents.students
+                adapter.studentNames = presentStudents.students!!
                 class_students_list.adapter = adapter
             }
         }

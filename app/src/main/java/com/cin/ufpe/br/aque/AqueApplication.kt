@@ -17,9 +17,4 @@ class AqueApplication : Application() {
             return instance!!.applicationContext
         }
     }
-
-    override fun onCreate() {
-        super.onCreate()
-        startActivity(Intent(applicationContext, MainActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-    }
 }
