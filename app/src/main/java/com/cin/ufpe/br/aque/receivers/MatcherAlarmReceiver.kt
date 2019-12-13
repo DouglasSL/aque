@@ -101,7 +101,7 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
     }
 
     private fun distance(location1: Location, location2: Location) : Double {
-            var R = 6371 * 1000; // Earth's radius in m
+            var R = 6371 * 1000 // Earth's radius in m
             return Math.acos(Math.sin(location1.lat!!)*Math.sin(location2.lat!!) +
                     Math.cos(location1.lat!!)*Math.cos(location2.lat!!) *
                     Math.cos(location1.lng!!-location2.lng!!)) * R;
