@@ -10,7 +10,6 @@ import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import org.jetbrains.anko.doAsync
 
-
 class RoutineAlarmReceiver : BroadcastReceiver() {
 
     private val TAG = RoutineAlarmReceiver::class.simpleName

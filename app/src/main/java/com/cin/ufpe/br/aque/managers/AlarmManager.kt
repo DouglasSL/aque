@@ -94,6 +94,15 @@ class AlarmManager {
             alarmManager.cancel(alarmIntent)
         }
 
+        fun cancelLocationAlarm(ctx: Context){
+            Log.i(TAG, "Disabling location alarm")
+            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmIntent: PendingIntent = Intent(ctx, LocationAlarmReceiver::class.java).let { intent ->
+                PendingIntent.getBroadcast(ctx, 0, intent, 0)
+            }
+            alarmManager.cancel(alarmIntent)
+        }
+
         fun cancelMatcherAlarm(ctx: Context){
             Log.i(TAG, "Disabling matcher alarm")
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager

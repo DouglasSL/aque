@@ -3,7 +3,6 @@ package com.cin.ufpe.br.aque.actvities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cin.ufpe.br.aque.R
