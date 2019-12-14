@@ -10,9 +10,9 @@
         android:id="@+id/header_background3"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:background="@color/tomato"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/tomato" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/register_professor_title"
