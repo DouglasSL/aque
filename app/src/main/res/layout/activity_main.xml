@@ -4,15 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actvities.MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@android:color/holo_blue_bright"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="55dp" />
+    tools:context=".actvities.MainActivity"
+    android:background="@color/tomato">
 
     <TextView
         android:id="@+id/textView"
@@ -46,8 +39,8 @@
 
     <Button
         android:id="@+id/professor_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="104dp"
+        android:layout_height="51dp"
         android:layout_marginStart="161dp"
         android:layout_marginLeft="161dp"
         android:layout_marginTop="26dp"
