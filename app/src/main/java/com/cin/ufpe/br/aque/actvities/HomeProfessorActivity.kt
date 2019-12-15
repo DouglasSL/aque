@@ -12,6 +12,7 @@ import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.UserClass
+import com.cin.ufpe.br.aque.ui.login.professor.ProfessorLoginActivity
 import kotlinx.android.synthetic.main.activity_home_professor.*
 import kotlinx.android.synthetic.main.activity_home_professor.professor_classes_list
 import org.jetbrains.anko.doAsync
@@ -73,6 +74,11 @@ class HomeProfessorActivity : AppCompatActivity() {
         add_professor_class_button.setOnClickListener {
             startActivity(Intent(applicationContext, ProfessorAddClassActivity::class.java))
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, ProfessorLoginActivity::class.java))
+        super.onBackPressed()
     }
 
     override fun onDestroy() {

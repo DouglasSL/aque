@@ -1,5 +1,6 @@
 package com.cin.ufpe.br.aque.actvities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,6 +11,7 @@ import com.cin.ufpe.br.aque.dtos.DetailClassInfoDto
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.models.Date
 import com.cin.ufpe.br.aque.models.PresentStudents
+import com.cin.ufpe.br.aque.ui.login.professor.ProfessorLoginActivity
 import kotlinx.android.synthetic.main.activity_class_detail.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -75,6 +77,11 @@ class ClassDetailActivity : AppCompatActivity() {
                 }
 
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
+        super.onBackPressed()
     }
 
     override fun onDestroy() {

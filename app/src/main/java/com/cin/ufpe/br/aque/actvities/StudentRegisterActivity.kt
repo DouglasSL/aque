@@ -71,6 +71,10 @@ class StudentRegisterActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, StudentLoginActivity::class.java))
+        super.onBackPressed()
+    }
 
     private fun isEmailValid(email: String): Boolean {
         return if (email.contains('@')) {

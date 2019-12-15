@@ -115,6 +115,11 @@ class ProfessorAddClassActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
+        super.onBackPressed()
+    }
+
     private fun isValidClassHour(hour: String) : Boolean {
         var h = hour.toInt()
         return if (h >= 0 && h <= 24) true else false

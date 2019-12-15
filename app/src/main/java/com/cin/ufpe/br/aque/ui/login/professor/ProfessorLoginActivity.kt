@@ -16,7 +16,9 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.cin.ufpe.br.aque.R
+import com.cin.ufpe.br.aque.actvities.ClassDetailActivity
 import com.cin.ufpe.br.aque.actvities.HomeProfessorActivity
+import com.cin.ufpe.br.aque.actvities.MainActivity
 import com.cin.ufpe.br.aque.actvities.ProfessorRegisterActivity
 import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
@@ -120,6 +122,11 @@ class ProfessorLoginActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, ProfessorRegisterActivity::class.java))
         }
 
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+        super.onBackPressed()
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {

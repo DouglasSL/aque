@@ -88,4 +88,9 @@ class StudentAddClassActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
+        super.onBackPressed()
+    }
 }

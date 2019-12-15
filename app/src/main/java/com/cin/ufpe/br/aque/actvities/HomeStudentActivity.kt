@@ -14,6 +14,7 @@ import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.UserClass
+import com.cin.ufpe.br.aque.ui.login.student.StudentLoginActivity
 import kotlinx.android.synthetic.main.activity_home_student.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -76,5 +77,10 @@ class HomeStudentActivity : AppCompatActivity() {
         add_class_button.setOnClickListener {
             startActivity(Intent(applicationContext, StudentAddClassActivity::class.java))
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, StudentLoginActivity::class.java))
+        super.onBackPressed()
     }
 }

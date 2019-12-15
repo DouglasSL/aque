@@ -19,6 +19,7 @@ import android.widget.Toast
 
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
+import com.cin.ufpe.br.aque.actvities.MainActivity
 import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
 import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
@@ -121,6 +122,11 @@ class StudentLoginActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(applicationContext, MainActivity::class.java))
+        super.onBackPressed()
     }
 
     private fun updateUiWithUser(model: StudentLoggedInUserView) {
