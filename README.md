@@ -16,6 +16,9 @@ Professores para criação das classes e alunos para confirmar presenças nas au
 
 Não encontramos nenhum aplicativo no mercado que possua o mesmo objetivo proposto acima, os aplicativos de chamadas que foram encontrados são meramente cadernetas de chamadas eletrônicas.
 
+### Link do vídeo
+https://youtu.be/T8qQ72RNi8M
+
 ### Funcionamento
 
 O funcionamento de presença é baseado por meio de alarmes:
