@@ -59,6 +59,10 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
 
                         //match logic
                         var locations = teacherLocations.locations
+                        if (locations!!.size == 0) {
+                            Log.i(TAG, "No locations collected")
+                            return@addOnSuccessListener
+                        }
                         var teacherLocation = locations!!.get(0)
                         var mostOccurrence = 0
                         for (i in 0..(locations!!.size - 1)) {

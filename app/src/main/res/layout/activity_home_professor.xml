@@ -54,17 +54,17 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="365dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_marginStart="22dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/professor_classes_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/professor_classes_list"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

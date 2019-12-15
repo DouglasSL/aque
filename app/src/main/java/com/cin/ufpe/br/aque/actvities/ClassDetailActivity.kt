@@ -60,9 +60,9 @@ class ClassDetailActivity : AppCompatActivity() {
                             DetailClassInfoDto(
                                 className,
                                 classId,
-                                day,
-                                month,
-                                year,
+                                day!!,
+                                month!!,
+                                year!!,
                                 presentStudents.students!!.size
                             )
                         )

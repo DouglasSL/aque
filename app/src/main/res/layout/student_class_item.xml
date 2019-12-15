@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,18 +9,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/student_class_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border">
+        android:layout_width="300dp"
+        android:layout_height="155dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/tomato">
 
         <TextView
             android:id="@+id/student_class_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="monospace"
             android:text="Turma: "
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +32,11 @@
             android:id="@+id/student_class_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/student_class_field"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,10 +44,12 @@
             android:id="@+id/student_class_professor_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="monospace"
             android:text="Professor: "
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/student_class_field" />
 
@@ -48,9 +57,11 @@
             android:id="@+id/student_class_professor_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="21dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/student_class_professor_field"
             app:layout_constraintTop_toBottomOf="@id/student_class_name" />
 
@@ -58,10 +69,12 @@
             android:id="@+id/student_schedule_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
             android:text="Horário: "
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/student_class_professor_name" />
 
@@ -69,9 +82,11 @@
             android:id="@+id/student_class_first_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="21dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/student_schedule_field"
             app:layout_constraintTop_toBottomOf="@id/student_class_professor_name" />
 
@@ -79,11 +94,12 @@
             android:id="@+id/student_class_second_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="15dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/student_schedule_field"
-            app:layout_constraintTop_toBottomOf="@id/student_class_first_schedule" />
+            app:layout_constraintTop_toBottomOf="@id/student_class_first_schedule"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
