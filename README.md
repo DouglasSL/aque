@@ -35,6 +35,9 @@ Fica disparando de 15 em 15 minutos para coletar a localização do usuário e s
 #### Matcher Alarm
 Responsável por fazer o casamento de localizações entre professores e alunos.
 
+###### A imagem a seguir é um exemplo mockado do fluxo de funcionamento dos alarmes.
+![Image](/attachments/alarms_logs.png)
+
 #### Fluxo de Telas
 
 O fluxo de telas entre aluno e progessor são muito semelhantes. Inicialmente existe a tela inicial
@@ -69,7 +72,7 @@ fluxo de telas), e outro fluxo para testes dos alrmes que não necessariamente e
 
 #### Ambiente de Testes
 
-@Douglas aqui PLEASEEEEEE!!!!
+Os testes para pegar localização do aluno/professor foram feitos em um celular Motorola G5S com Sistema Operacional Oreo (8.1.0)
 
 #### Estudante e Professor
 
