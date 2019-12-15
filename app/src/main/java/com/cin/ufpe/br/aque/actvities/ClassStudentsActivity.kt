@@ -2,6 +2,7 @@ package com.cin.ufpe.br.aque.actvities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.adapters.ClassStudentsAdapter
@@ -13,33 +14,37 @@ import org.jetbrains.anko.uiThread
 
 class ClassStudentsActivity : AppCompatActivity() {
     private val firebase = FirebaseManager()
+    private val TAG = ClassStudentsActivity::class.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_class_students)
 
-        val classId = intent.getStringExtra("classId")
-        val classDay = intent.getStringExtra("classDay")
-        val classMonth = intent.getStringExtra("classMonth")
-        val classYear = intent.getStringExtra("classYear")
+        var classId = intent.getStringExtra("classId")
+        var classDay = intent.getIntExtra("classDay", 0)
+        var classMonth = intent.getIntExtra("classMonth", 0)
+        var classYear = intent.getIntExtra("classYear", 0)
 
         class_students_list.layoutManager = LinearLayoutManager(this)
         val adapter = ClassStudentsAdapter()
 
         val presentStudentsId = classId + "_" + classDay + "_" + classMonth + "_" + classYear
-        val task = firebase.getPresentStudents(presentStudentsId)
-
-        while(!task.isComplete){}
-
-        val presentStudents = task
-            .result!!
-            .toObject(PresentStudents::class.java) as PresentStudents
-
-        doAsync {
-            uiThread {
-                adapter.studentNames = presentStudents.students!!
-                class_students_list.adapter = adapter
+        firebase.getPresentStudents(presentStudentsId)
+            .addOnSuccessListener { document ->
+                if (document == null) {
+                    return@addOnSuccessListener
+                }
+                Log.i(TAG, "Retreived present students")
+                val presentStudents = document.toObject(PresentStudents::class.java)
+                doAsync {
+                    uiThread {
+                        adapter.studentNames = presentStudents!!.students!!
+                        class_students_list.adapter = adapter
+                    }
+                }
             }
-        }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Error retreiving present students")
+            }
     }
 }
