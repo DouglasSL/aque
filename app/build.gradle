@@ -50,8 +50,6 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
-
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

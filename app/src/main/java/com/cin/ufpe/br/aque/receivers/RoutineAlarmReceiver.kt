@@ -27,7 +27,7 @@ class RoutineAlarmReceiver : BroadcastReceiver() {
                 Log.i(TAG, "Class found for day: $currentDay")
 
                 var firstClass = db.ClassDAO().getFirstClass(currentDay)
-                Log.i(TAG, currentHour.toString() + " - " +firstClass.startHour)
+                Log.i(TAG, currentHour.toString() + " - " + firstClass.startHour)
                 if (currentHour > firstClass.startHour){
                     Log.i(TAG, "Class already ended, do nothing")
                     return@doAsync

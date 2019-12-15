@@ -65,15 +65,15 @@ class MatcherAlarmReceiver : BroadcastReceiver() {
                         }
                         var teacherLocation = locations!!.get(0)
                         var mostOccurrence = 0
-                        for (i in 0..(locations!!.size - 1)) {
+                        for (i in locations) {
                             var occurrence = 0
-                            for (j in 0..(locations!!.size - 1)) {
-                                if (distance(locations!!.get(i), locations!!.get(j)) <= 15){
+                            for (j in locations) {
+                                if (distance(i, j) <= 15){
                                     occurrence += 1
                                 }
                             }
                             if (occurrence > mostOccurrence) {
-                                teacherLocation = locations!!.get(i)
+                                teacherLocation = i
                                 mostOccurrence = occurrence
                             }
                         }
