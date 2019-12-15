@@ -15,6 +15,7 @@ class RoutineAlarmReceiver : BroadcastReceiver() {
     private val TAG = RoutineAlarmReceiver::class.simpleName
 
     override fun onReceive(context: Context, intent: Intent?) {
+        AlarmManager.cancelRoutineAddAlarm(context)
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_WEEK)
         val currentHour = calendar.get(Calendar.HOUR_OF_DAY)

@@ -139,7 +139,7 @@ class StudentLoginActivity : AppCompatActivity() {
         val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(true)
-        AlarmManager.setRoutineAlarm(applicationContext)
+        AlarmManager.setRoutineAlarm(applicationContext,6 ,0)
         Utils.checkForClass(applicationContext, "student_class", model.email)
         startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
     }

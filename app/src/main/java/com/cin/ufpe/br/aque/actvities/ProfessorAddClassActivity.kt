@@ -1,6 +1,7 @@
 package com.cin.ufpe.br.aque.actvities
 
 import android.content.Intent
+import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,15 +9,14 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.database.ClassDB
+import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
 import com.cin.ufpe.br.aque.models.Class
 import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.Professor
 import com.cin.ufpe.br.aque.models.UserClass
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.activity_professor_add_class.*
-import kotlinx.android.synthetic.main.activity_student_login.*
 import org.jetbrains.anko.doAsync
 
 
@@ -95,8 +95,8 @@ class ProfessorAddClassActivity : AppCompatActivity() {
 
                 doAsync {
                     var db = ClassDB.getDatabase(applicationContext)
-                    var classFirstDay = Class(0, classId, className, firstDay, firstDayStartHour.toInt(), firstDayEndHour.toInt())
-                    var classSecondDay = Class(0,classId, className, secondDay, secondDayStartHour.toInt(), secondDayEndHour.toInt())
+                    var classFirstDay = Class(0, classId, className, firstDay, firstDayStartHour, firstDayEndHour)
+                    var classSecondDay = Class(0,classId, className, secondDay, secondDayStartHour, secondDayEndHour)
 
                     db.ClassDAO().add(classFirstDay)
                     db.ClassDAO().add(classSecondDay)
@@ -105,6 +105,9 @@ class ProfessorAddClassActivity : AppCompatActivity() {
                     var userClass = UserClass(sharedPreferences.getUserId(), classId)
                     firebaseManager.saveUserClass("professor_class", userClass)
                     Log.i("Professor_add_class", "Added class with id: " + classId)
+
+                    AlarmManager.setRoutineAlarm(applicationContext,
+                        Calendar.getInstance().get(Calendar.HOUR_OF_DAY) ,1)
                 }
 
                 startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))

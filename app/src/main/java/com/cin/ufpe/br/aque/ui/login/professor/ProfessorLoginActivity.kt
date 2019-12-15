@@ -135,7 +135,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
         val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(false)
-        AlarmManager.setRoutineAlarm(applicationContext)
+        AlarmManager.setRoutineAlarm(applicationContext,6 ,0)
         Utils.checkForClass(applicationContext, "professor_class", model.email)
         startActivity(Intent(applicationContext, HomeProfessorActivity::class.java))
     }
