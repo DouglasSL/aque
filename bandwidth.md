@@ -14,3 +14,7 @@ O primeiro pico da imagem abaixo é no momento que ele faz a requisição para o
 pegar localização, já o segundo uma requisição para o Firebase.
 
 ![Image](/attachments/alarm_network.png)
+
+## Boas práticas
+O alarme de início/fim e matcher de aula são sempre desabilitados após concluirem sua função. 
+Isso evita que alarmes fiquem acordando e consumindo banda para acessar o Firebase.

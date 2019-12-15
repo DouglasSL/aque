@@ -17,3 +17,8 @@ Light devido a requisição feita ao Firebase para salvar as localizações cole
 da aula.
 
 ![Image 1](/attachments/alarm_bateria_location.png)
+
+## Boas práticas
+Os alarmes intermediários (todos menos o Routine Alarm) são sempre desabilitados após despertarem, com execeção do de
+localização, que é cancelado junto com o final da aula, devido a necessidade de ficar acordando de 15 em 15
+minutos até o final da aula. Isso evita que alarmes fiquem acordando consumindo bateria sem necessidade.

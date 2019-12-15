@@ -9,6 +9,10 @@ Não foram notadas nenhuma diferença significante no consumo de memória durant
 
 ![Image](/attachments/memory.png)
 
+## Boas práticas
+No final de toda aula é deletado do banco de dados local todas as localizações que foram coletadas durante a aula, 
+evitando guardar informações desnecessárias que não serão utilizadas mais.
+
 ## Memory leak
 
 Para realizar o teste de memory leak (vazamento de mémoria), foi utilizada a ferramenta LeakCanary. O LeakCanary 
@@ -20,6 +24,9 @@ o treshold era rapidamente atingido.
 
 ### Melhorias
 
-Primeiramente como melhoria, foi removido de todas as activities o histórico do fluxo de telas para que não ficasse guardado
-todas as telas na memória (apagar o histórico não afetaria a funcionalidade do app). Ainda assim, com interação entre telas que 
-continham adapter, pode-se perceber que vazamentos de mémória ocorriam a ponto de passar do limite definido pelo LeakCanary. Foi observado que o essas tipos de tela, seus adapters guardavam uma refrência para outra activity. Como melhoria, o método _onDestroy()_ dessas activities foi reimplementado, para que ele agora remova as referências guardadas no adapter. Após estas melhorias, mesmo seguindo fluxos aleatórios (feitos manualmente), não pode-se atingir o treshold definido pela ferramenta.
+Foi removido de todas as activities o histórico do fluxo de telas para que não ficasse guardadotodas as 
+telas na memória (apagar o histórico não afetaria a funcionalidade do app). Ainda assim, com interação entre telas que 
+continham adapter, pode-se perceber que vazamentos de mémória ocorriam a ponto de passar do limite definido pelo LeakCanary. 
+Foi observado que o essas tipos de tela, seus adapters guardavam uma refrência para outra activity. Como melhoria, o método _onDestroy()_ 
+dessas activities foi reimplementado, para que ele agora remova as referências guardadas no adapter. Após estas melhorias, mesmo seguindo
+ fluxos aleatórios (feitos manualmente), não pode-se atingir o treshold definido pela ferramenta.

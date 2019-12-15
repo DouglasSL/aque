@@ -42,7 +42,7 @@ onde o usuário possui a opção de querer logar como aluno ou professor. Após 
 é mostrada ao usuário que se já cadastrado pode logar, senão, pode se cadastrar. Após o usuário
 ser cadastrado, ele pode logar e será redirecionada para as telas principais do aluno ou professor.
 Em ambas as telas pode ser visualizado informaações de disciplinas que no caso do professor, ele criou
-e no caso do aluno ele se matriculou. Ainda na tela principal, existe um botão com im **+**, que
+e no caso do aluno ele se matriculou. Ainda na tela principal, existe um botão com um **+**, que
 para o aluno leva a uma tela de se matricular na disciplina, e para o professor leva a criação de uma
 disciplina. Para o professor em sua tela principal, ele pode clicar em uma de suas disciplinas criadas
 e será redirecionado para uma tela que lista todas as datas que já houve aula para aquela disciplina
@@ -74,8 +74,8 @@ fluxo de telas), e outro fluxo para testes dos alrmes que não necessariamente e
 #### Estudante e Professor
 
 Para o fluxo de estudante e professor, o fluxo de telas que foi seguido é descrito como:
-1 - registra o estudando ou professor;
-2 - login;
+1 - Registra o estudante ou professor;
+2 - Login;
 3 - professor cria nova disciplina, estudante se matricula em uma nova disciplina;
 
 - [Douglas Soares](https://github.com/DouglasSL)

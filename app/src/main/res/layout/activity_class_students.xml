@@ -21,13 +21,13 @@
 
         <TextView
             android:id="@+id/class_name_students_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="15dp"
             android:text="Estudantes Presentes"
             android:fontFamily="monospace"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="27sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/header_class_students_background"
             app:layout_constraintStart_toStartOf="@+id/header_class_students_background"
