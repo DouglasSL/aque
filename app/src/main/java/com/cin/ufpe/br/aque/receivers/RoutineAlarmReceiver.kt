@@ -17,6 +17,7 @@ class RoutineAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_WEEK)
+        val currentHour = calendar.get(Calendar.HOUR_OF_DAY)
         
         doAsync {
             Log.i(TAG, "Checking for classes")
@@ -25,6 +26,12 @@ class RoutineAlarmReceiver : BroadcastReceiver() {
                 Log.i(TAG, "Class found for day: $currentDay")
 
                 var firstClass = db.ClassDAO().getFirstClass(currentDay)
+                Log.i(TAG, currentHour.toString() + " - " +firstClass.startHour)
+                if (currentHour > firstClass.startHour){
+                    Log.i(TAG, "Class already ended, do nothing")
+                    return@doAsync
+                }
+
                 var sharedPreferences = SharedPreferencesManager(context)
                 sharedPreferences.setCurentClass(firstClass)
 
