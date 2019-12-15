@@ -14,16 +14,16 @@ class AlarmManager {
     companion object {
         private val TAG = AlarmManager::class.simpleName
 
-        fun setRoutineAlarm(ctx : Context) {
+        fun setRoutineAlarm(ctx: Context, hour: Int, code: Int) {
             Log.i(TAG, "Setting alarm to wake up everyday at 6am")
             val calendar: Calendar = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
-                set(Calendar.HOUR_OF_DAY, 6)
+                set(Calendar.HOUR_OF_DAY, hour)
                 set(Calendar.MINUTE, 0)
             }
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, RoutineAlarmReceiver::class.java).let { intent ->
-                PendingIntent.getBroadcast(ctx, 0, intent, 0)
+                PendingIntent.getBroadcast(ctx, code, intent, 0)
             }
 
             alarmManager?.setRepeating(
@@ -90,6 +90,24 @@ class AlarmManager {
             val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent: PendingIntent = Intent(ctx, ClassAlarmReceiver::class.java).let { intent ->
                 PendingIntent.getBroadcast(ctx, code, intent, 0)
+            }
+            alarmManager.cancel(alarmIntent)
+        }
+
+        fun cancelLocationAlarm(ctx: Context){
+            Log.i(TAG, "Disabling location alarm")
+            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmIntent: PendingIntent = Intent(ctx, LocationAlarmReceiver::class.java).let { intent ->
+                PendingIntent.getBroadcast(ctx, 0, intent, 0)
+            }
+            alarmManager.cancel(alarmIntent)
+        }
+
+        fun cancelRoutineAddAlarm(ctx: Context){
+            Log.i(TAG, "Disabling routine add (code 1) alarm")
+            val alarmManager: AlarmManager = ctx.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmIntent: PendingIntent = Intent(ctx, RoutineAlarmReceiver::class.java).let { intent ->
+                PendingIntent.getBroadcast(ctx, 1, intent, 0)
             }
             alarmManager.cancel(alarmIntent)
         }

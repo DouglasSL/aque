@@ -20,15 +20,11 @@ import android.widget.Toast
 import com.cin.ufpe.br.aque.R
 import com.cin.ufpe.br.aque.actvities.HomeStudentActivity
 import com.cin.ufpe.br.aque.actvities.StudentRegisterActivity
-import com.cin.ufpe.br.aque.database.ClassDB
 import com.cin.ufpe.br.aque.managers.AlarmManager
 import com.cin.ufpe.br.aque.managers.FirebaseManager
 import com.cin.ufpe.br.aque.managers.SharedPreferencesManager
-import com.cin.ufpe.br.aque.models.Class
 import com.cin.ufpe.br.aque.models.Student
 import com.cin.ufpe.br.aque.utils.Utils
-import leakcanary.AppWatcher
-import org.jetbrains.anko.doAsync
 
 class StudentLoginActivity : AppCompatActivity() {
 
@@ -38,8 +34,6 @@ class StudentLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_login)
-
-        AppWatcher.objectWatcher.watch(this)
 
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
@@ -142,7 +136,7 @@ class StudentLoginActivity : AppCompatActivity() {
         val sharedPreferencesManager = SharedPreferencesManager(applicationContext)
         sharedPreferencesManager.setUserId(model.email)
         sharedPreferencesManager.setUserType(true)
-        AlarmManager.setRoutineAlarm(applicationContext)
+        AlarmManager.setRoutineAlarm(applicationContext,6 ,0)
         Utils.checkForClass(applicationContext, "student_class", model.email)
         startActivity(Intent(applicationContext, HomeStudentActivity::class.java))
     }

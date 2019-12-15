@@ -3,7 +3,6 @@ package com.cin.ufpe.br.aque.actvities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cin.ufpe.br.aque.R
@@ -15,7 +14,6 @@ import com.cin.ufpe.br.aque.models.ClassDescription
 import com.cin.ufpe.br.aque.models.UserClass
 import kotlinx.android.synthetic.main.activity_home_professor.*
 import kotlinx.android.synthetic.main.activity_home_professor.professor_classes_list
-import leakcanary.AppWatcher
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -26,8 +24,6 @@ class HomeProfessorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_professor)
-
-        AppWatcher.objectWatcher.watch(this)
 
         val sharedPreferences = SharedPreferencesManager(applicationContext)
 

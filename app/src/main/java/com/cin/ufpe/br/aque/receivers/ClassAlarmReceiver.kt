@@ -35,7 +35,7 @@ class ClassAlarmReceiver : BroadcastReceiver() {
         }
 
         Log.i(TAG, "End class alarm: disabling current alarms")
-
+        AlarmManager.cancelLocationAlarm(context)
         AlarmManager.cancelClassAlarm(context, C0DE_END_CLASS_ALARM)
 
         var sharedPreferences = SharedPreferencesManager(context)
@@ -49,8 +49,8 @@ class ClassAlarmReceiver : BroadcastReceiver() {
             var firebase = FirebaseManager()
 
             var userId = sharedPreferences.getUserId()
-            if (sharedPreferences.isStudent()){
-                firebase.saveUserLocations("${currentClass.className}_${currentClass.day}", userId, locations)
+            if (sharedPreferences.isStudent()) {
+                firebase.saveUserLocations("${currentClass.classId}_${currentClass.day}", userId, locations)
             } else {
                 firebase.saveUserLocations("${userId}_${currentClass.day}", userId, locations)
                 AlarmManager.setMatcherAlarm(context, currentClass)

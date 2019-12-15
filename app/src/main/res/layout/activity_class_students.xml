@@ -14,10 +14,10 @@
         <ImageView
             android:id="@+id/header_class_students_background"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="80dp"
+            android:background="@color/tomato"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:color/holo_blue_bright" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/class_name_students_title"
@@ -25,6 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Estudantes Presentes"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/header_class_students_background"
@@ -34,10 +36,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="365dp"
+        android:layout_width="360dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_marginStart="22dp">
 

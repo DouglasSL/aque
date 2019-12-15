@@ -13,3 +13,4 @@ para marcar a presença
 O primeiro pico da imagem abaixo é no momento que ele faz a requisição para o Location Manager para
 pegar localização, já o segundo uma requisição para o Firebase.
 
+![Image](/attachments/alarm_network.png)

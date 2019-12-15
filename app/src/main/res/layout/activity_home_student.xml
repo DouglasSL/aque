@@ -14,42 +14,47 @@
         <ImageView
             android:id="@+id/header_background"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="80dp"
+            android:background="@color/tomato"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:color/holo_blue_bright" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/classes_title"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="monospace"
             android:text="Turmas"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/header_background"
             app:layout_constraintStart_toStartOf="@+id/header_background"
             app:layout_constraintTop_toBottomOf="@+id/header_background" />
 
-        <ImageButton
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_class_button"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="200dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitXY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:backgroundTint="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/header_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:tint="@color/tomato"
             app:layout_constraintStart_toEndOf="@id/classes_title"
-            app:layout_constraintTop_toBottomOf="@+id/header_background"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            app:layout_constraintTop_toBottomOf="@+id/header_background" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="365dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:layout_marginStart="22dp">
 

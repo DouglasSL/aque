@@ -34,12 +34,12 @@ class SharedPreferencesManager {
     }
 
     fun getUserId() : String {
-        Log.i(TAG, "Retrieving userStudent id")
+        Log.i(TAG, "Retrieving user id")
         return sharedPreferences.getString(USER_ID, "")!!
     }
 
     fun setUserId(userId: String) {
-        Log.i(TAG, "Retrieving userStudent id")
+        Log.i(TAG, "Retrieving user id")
         val editor = sharedPreferences.edit()
         editor.putString(USER_ID, userId)
         editor.apply()

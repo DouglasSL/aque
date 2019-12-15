@@ -8,18 +8,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:id="@+id/detail_class_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border">
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/tomato">
 
         <TextView
             android:id="@+id/detail_class_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="monospace"
             android:text="Data: "
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +31,12 @@
             android:id="@+id/detail_class_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_class_field" />
 
@@ -37,10 +44,12 @@
             android:id="@+id/detail_class_students_number_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="monospace"
             android:text="Número de Estudantes Presentes: "
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_class_date" />
 
@@ -48,8 +57,11 @@
             android:id="@+id/detail_class_students_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="11dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="monospace"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_class_students_number_field" />
