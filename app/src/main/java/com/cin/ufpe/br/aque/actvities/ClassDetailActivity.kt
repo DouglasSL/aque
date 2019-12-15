@@ -16,6 +16,7 @@ import org.jetbrains.anko.uiThread
 
 class ClassDetailActivity : AppCompatActivity() {
     private val firebase = FirebaseManager()
+    var adapter: ClassDetailAdapter? = ClassDetailAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +28,8 @@ class ClassDetailActivity : AppCompatActivity() {
         class_name_professor_title.text = className
 
         class_dates_list.layoutManager = LinearLayoutManager(this)
-        val adapter = ClassDetailAdapter()
-        adapter.activityOwner = this
+
+        adapter!!.activityOwner = this
 
 
         doAsync {
@@ -68,11 +69,17 @@ class ClassDetailActivity : AppCompatActivity() {
                     }
 
                     uiThread {
-                        adapter.detailClassInfos = detailClassInfosDto
+                        adapter!!.detailClassInfos = detailClassInfosDto
                         class_dates_list.adapter = adapter
                     }
                 }
 
         }
+    }
+
+    override fun onDestroy() {
+        adapter!!.activityOwner = null
+        adapter = null
+        super.onDestroy()
     }
 }

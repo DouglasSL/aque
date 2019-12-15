@@ -20,6 +20,7 @@ import org.jetbrains.anko.uiThread
 class HomeProfessorActivity : AppCompatActivity() {
 
     private val firebase = FirebaseManager()
+    var adapter: ProfessorClassAdapter? = ProfessorClassAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,8 +29,8 @@ class HomeProfessorActivity : AppCompatActivity() {
         val sharedPreferences = SharedPreferencesManager(applicationContext)
 
         professor_classes_list.layoutManager = LinearLayoutManager(this)
-        val adapter = ProfessorClassAdapter()
-        adapter.activityOwner = this
+
+        adapter!!.activityOwner = this
 
         doAsync {
             val userId = sharedPreferences.getUserId()
@@ -62,7 +63,7 @@ class HomeProfessorActivity : AppCompatActivity() {
                     }
 
                     uiThread {
-                        adapter.classInfos = professorClasses
+                        adapter!!.classInfos = professorClasses
                         professor_classes_list.adapter = adapter
                     }
                 }
@@ -72,5 +73,11 @@ class HomeProfessorActivity : AppCompatActivity() {
         add_professor_class_button.setOnClickListener {
             startActivity(Intent(applicationContext, ProfessorAddClassActivity::class.java))
         }
+    }
+
+    override fun onDestroy() {
+        adapter!!.activityOwner = null
+        adapter = null
+        super.onDestroy()
     }
 }

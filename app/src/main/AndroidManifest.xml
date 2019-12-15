@@ -14,21 +14,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".actvities.ClassStudentsActivity"></activity>
-        <activity android:name=".actvities.ClassDetailActivity" />
+        <activity
+            android:name=".actvities.ClassStudentsActivity"
+            android:noHistory="true"></activity>
+        <activity
+            android:name=".actvities.ClassDetailActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".ui.login.professor.ProfessorLoginActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_professor_login" />
-        <activity android:name=".actvities.StudentRegisterActivity" />
-        <activity android:name=".actvities.ProfessorRegisterActivity" />
+        <activity
+            android:name=".actvities.StudentRegisterActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".actvities.ProfessorRegisterActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".ui.login.student.StudentLoginActivity"
+            android:noHistory="true"
             android:label="@string/title_activity_student_login" />
-        <activity android:name=".actvities.ProfessorAddClassActivity" />
-        <activity android:name=".actvities.HomeProfessorActivity" />
-        <activity android:name=".actvities.StudentAddClassActivity" />
-        <activity android:name=".actvities.HomeStudentActivity" />
-        <activity android:name=".actvities.MainActivity">
+        <activity
+            android:name=".actvities.ProfessorAddClassActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".actvities.HomeProfessorActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".actvities.StudentAddClassActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".actvities.HomeStudentActivity"
+            android:noHistory="true"/>
+        <activity
+            android:name=".actvities.MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
