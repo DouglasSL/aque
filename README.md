@@ -56,6 +56,8 @@ e a quantidade de alunos presentes naquela data. Ao clicar em um desses itens, e
 para uma tela, que lista o email de todos os alunos presentes naquele dia naquela disciplina
 específica. E assim conclui todo o fluxo de telas.
 
+[Imagens das telas](https://github.com/DouglasSL/aque/tree/master/attachments/screens)
+
 ### Desenvolvimento
 
 O projeto pode ser dividido entre:
